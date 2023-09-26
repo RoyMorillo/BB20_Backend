@@ -1,16 +1,34 @@
-﻿using BB20_Categories.DTOs;
+﻿using AutoMapper;
+using BB20_Categories.DTOs;
+using BB20_Categories.Models;
 using BB20_Categories.Repository.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace BB20_Categories.Repository.Services;
 
 public class CategoryRepository : ICategoryRepository
 {
-    public Task<CategoryDTO> AddAsync(CategoryDTO entity)
+    private readonly BB20_CategoriesContext _context;
+    private readonly IMapper _mapper;
+
+    public CategoryRepository(BB20_CategoriesContext context, IMapper mapper)
     {
-        throw new NotImplementedException();
+        _context = context;
+        _mapper = mapper;
     }
 
-    public Task<List<CategoryDTO>> GetAll()
+    public async Task<List<CategoryDTO>> GetAll()
+    {
+        List<Category> categories = await _context.Categories
+                                            .Where(x => x.DeleteFlag == false)
+                                            .Select(s => new Category { CategoryId = s.CategoryId, Name = s.Name, DisplayStatus = s.DisplayStatus })
+                                            .AsNoTracking()
+                                            .ToListAsync();
+
+        return _mapper.Map<List<CategoryDTO>>(categories);
+    }
+
+    public Task<List<CategoryDTO>> GetAllTree()
     {
         throw new NotImplementedException();
     }
@@ -31,6 +49,11 @@ public class CategoryRepository : ICategoryRepository
     }
 
     public Task<CategoryDTO> GetDataById(int categoryId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<CategoryDTO> AddAsync(CategoryDTO entity)
     {
         throw new NotImplementedException();
     }

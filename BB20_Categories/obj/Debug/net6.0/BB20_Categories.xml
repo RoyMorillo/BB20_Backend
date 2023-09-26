@@ -9,11 +9,11 @@
             CRUD Operations on category table in database.
             </summary>
         </member>
-        <member name="M:BB20_Categories.Controllers.v1.CategoryController.Index">
+        <member name="M:BB20_Categories.Controllers.v1.CategoryController.GetAll">
             <summary>
-            just testing
+            Get all categories only
             </summary>
-            <returns>Correcto</returns>
+            <returns>List of categories only</returns>
         </member>
         <member name="P:BB20_Categories.DTOs.CategoryDTO.CategoryId">
             <summary>
