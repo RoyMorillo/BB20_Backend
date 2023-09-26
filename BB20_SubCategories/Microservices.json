@@ -1,0 +1,8 @@
+{
+  "Microservices": {
+    "InteriorCategory": {
+      "BaseUrl": "https://localhost:7050",
+      "EndPoint": "/api/v1/InteriorCategory/GetAll"
+    }
+  }
+}
