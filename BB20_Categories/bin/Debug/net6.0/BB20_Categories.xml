@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BB20_Categories</name>
+    </assembly>
+    <members>
+        <member name="T:BB20_Categories.Controllers.v1.CategoryController">
+            <summary>
+            CRUD Operations on category table in database.
+            </summary>
+        </member>
+        <member name="M:BB20_Categories.Controllers.v1.CategoryController.Index">
+            <summary>
+            just testing
+            </summary>
+            <returns>Correcto</returns>
+        </member>
+        <member name="P:BB20_Categories.DTOs.CategoryDTO.CategoryId">
+            <summary>
+            ID of the category
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.DTOs.CategoryDTO.Name">
+            <summary>
+            Name of the category
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.DTOs.CategoryDTO.DisplayStatus">
+            <summary>
+            Status of the category (display = 0 or hidden = 1)
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.Category.CategoryId">
+            <summary>
+            ID of the category
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.Category.Name">
+            <summary>
+            Name of the category
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.Category.DisplayStatus">
+            <summary>
+            Status of the category (display = 0 or hidden = 1)
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.Category.CreatedDate">
+            <summary>
+            DateTime of the creation of the row
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.Category.UpdatedDate">
+            <summary>
+            DateTime of the update of the row
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.Category.DeleteFlag">
+            <summary>
+            If the row is logicaly deleted (0 = false and 1 = true)
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.Category.RowVersion">
+            <summary>
+            This field is for the management of the concurrency
+            </summary>
+        </member>
+    </members>
+</doc>
