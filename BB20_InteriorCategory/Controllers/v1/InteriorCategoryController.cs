@@ -1,37 +1,37 @@
-﻿using BB20_SubCategories.Models.DTOs;
-using BB20_SubCategories.Repository.Contracts;
+﻿using BB20_InteriorCategories.Models.DTOs;
+using BB20_InteriorCategories.Repository.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BB20_SubCategories.Controllers.v1;
+namespace BB20_InteriorCategories.Controllers.v1;
 
 /// <summary>
-/// CRUD Operations on category table in database.
+/// CRUD Operations on interior category table in database.
 /// </summary>
 [ApiController]
 [Route("api/v{version:apiVersion}/[controller]")]
 [ApiVersion("1.0")]
-public class SubCategoryController : ControllerBase
+public class InteriorCategoryController : ControllerBase
 {
-    private readonly ISubCategoryRepository _subCategoryRepository;
+    private readonly IinteriorCategoryRepository _interiorCategoryRepository;
 
-    public SubCategoryController(ISubCategoryRepository subCategoryRepository)
+    public InteriorCategoryController(IinteriorCategoryRepository interiorCategoryRepository)
     {
-        _subCategoryRepository = subCategoryRepository;
+        _interiorCategoryRepository = interiorCategoryRepository;
     }
 
     /// <summary>
-    /// Get all sub categories only
+    /// Get all interior categories only
     /// </summary>
-    /// <returns>List of sub categories only</returns>
+    /// <returns>List of interior categories only</returns>
     [HttpGet]
-    [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<List<SubCategoryDTO>>>))]
+    [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<List<InteriorCategoryDTO>>>))]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
     [Route("GetAll")]
     public async Task<IActionResult> GetAll()
     {
-        ResponseDTO<DataDTO<List<SubCategoryDTO>>> response = new ResponseDTO<DataDTO<List<SubCategoryDTO>>>();
-        DataDTO<List<SubCategoryDTO>> data = new DataDTO<List<SubCategoryDTO>>();
+        ResponseDTO<DataDTO<List<InteriorCategoryDTO>>> response = new ResponseDTO<DataDTO<List<InteriorCategoryDTO>>>();
+        DataDTO<List<InteriorCategoryDTO>> data = new DataDTO<List<InteriorCategoryDTO>>();
 
         ErrorDTO error = new()
         {
@@ -41,9 +41,9 @@ public class SubCategoryController : ControllerBase
 
         try
         {
-            data.SubCategories = await _subCategoryRepository.GetAll();
+            data.InteriorCategories = await _interiorCategoryRepository.GetAll();
 
-            if (data.SubCategories.Count > 0)
+            if (data.InteriorCategories.Count > 0)
             {
                 response.success = true;
                 response.error = error;
@@ -71,17 +71,17 @@ public class SubCategoryController : ControllerBase
     }
 
     /// <summary>
-    /// Get a sub category by its ID
+    /// Get an interior category by its ID
     /// </summary>
-    /// <returns>sub category info</returns>
-    [HttpGet("GetDataById/{subCategoryId}", Name = nameof(GetDataById))]
-    [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<SubCategoryDTO>>))]
+    /// <returns>interior category info</returns>
+    [HttpGet("GetDataById/{interiorCategoryId}", Name = nameof(GetDataById))]
+    [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<InteriorCategoryDTO>>))]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async Task<IActionResult> GetDataById(int subCategoryId)
+    public async Task<IActionResult> GetDataById(int interiorCategoryId)
     {
-        ResponseDTO<DataDTO<SubCategoryDTO>> response = new ResponseDTO<DataDTO<SubCategoryDTO>>();
-        DataDTO<SubCategoryDTO> data = new DataDTO<SubCategoryDTO>();
+        ResponseDTO<DataDTO<InteriorCategoryDTO>> response = new ResponseDTO<DataDTO<InteriorCategoryDTO>>();
+        DataDTO<InteriorCategoryDTO> data = new DataDTO<InteriorCategoryDTO>();
 
         ErrorDTO error = new()
         {
@@ -91,9 +91,9 @@ public class SubCategoryController : ControllerBase
 
         try
         {
-            data.SubCategories = await _subCategoryRepository.GetDataById(subCategoryId);
+            data.InteriorCategories = await _interiorCategoryRepository.GetDataById(interiorCategoryId);
 
-            if (data.SubCategories != null)
+            if (data.InteriorCategories != null)
             {
                 response.success = true;
                 response.error = error;
@@ -121,9 +121,9 @@ public class SubCategoryController : ControllerBase
     }
 
     /// <summary>
-    /// Get the list of all sub categories available and ready for dropdown in the front end
+    /// Get the list of all interior categories available and ready for dropdown in the front end
     /// </summary>
-    /// <returns>Return Code and Description of the sub categories</returns>
+    /// <returns>Return Code and Description of the interior categories</returns>
     [HttpGet("GetForDropDown", Name = nameof(GetForDropDown))]
     [ProducesResponseType(200, Type = typeof(ResponseDTO<List<DropDownDTO>>))]
     [ProducesResponseType(400)]
@@ -141,7 +141,7 @@ public class SubCategoryController : ControllerBase
 
         try
         {
-            dropDown = await _subCategoryRepository.GetAllForDropDown();
+            dropDown = await _interiorCategoryRepository.GetAllForDropDown();
 
             if (dropDown.Count > 0)
             {
