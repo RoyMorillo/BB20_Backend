@@ -1,5 +1,5 @@
-﻿using BB20_Categories.DTOs;
-using BB20_Categories.Enums;
+﻿using BB20_Categories.Enums;
+using BB20_Categories.Models.DTOs;
 
 namespace BB20_Categories.Repository.Contracts;
 

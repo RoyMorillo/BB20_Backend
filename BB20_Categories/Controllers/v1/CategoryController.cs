@@ -1,4 +1,4 @@
-﻿using BB20_Categories.DTOs;
+﻿using BB20_Categories.Models.DTOs;
 using BB20_Categories.Repository.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,7 +36,7 @@ public class CategoryController : ControllerBase
 
         ErrorDTO error = new()
         {
-            reason = string.Empty,
+            innerException = string.Empty,
             message = string.Empty
         };
 
@@ -61,7 +61,7 @@ public class CategoryController : ControllerBase
         catch (Exception ex)
         {
             error.message = ex.Message;
-            error.reason = ex.InnerException?.Message;
+            error.innerException = ex.InnerException?.Message;
 
             response.success = false;
             response.error = error;

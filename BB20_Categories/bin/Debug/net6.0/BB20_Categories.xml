@@ -15,21 +15,6 @@
             </summary>
             <returns>List of categories only</returns>
         </member>
-        <member name="P:BB20_Categories.DTOs.CategoryDTO.CategoryId">
-            <summary>
-            ID of the category
-            </summary>
-        </member>
-        <member name="P:BB20_Categories.DTOs.CategoryDTO.Name">
-            <summary>
-            Name of the category
-            </summary>
-        </member>
-        <member name="P:BB20_Categories.DTOs.CategoryDTO.DisplayStatus">
-            <summary>
-            Status of the category (display = 0 or hidden = 1)
-            </summary>
-        </member>
         <member name="P:BB20_Categories.Models.Category.CategoryId">
             <summary>
             ID of the category
@@ -63,6 +48,21 @@
         <member name="P:BB20_Categories.Models.Category.RowVersion">
             <summary>
             This field is for the management of the concurrency
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryDTO.CategoryId">
+            <summary>
+            ID of the category
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryDTO.Name">
+            <summary>
+            Name of the category
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryDTO.DisplayStatus">
+            <summary>
+            Status of the category (display = 0 or hidden = 1)
             </summary>
         </member>
     </members>

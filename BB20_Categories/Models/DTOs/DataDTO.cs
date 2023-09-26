@@ -1,4 +1,4 @@
-﻿namespace BB20_Categories.DTOs;
+﻿namespace BB20_Categories.Models.DTOs;
 
 public class DataDTO<TEntity>
 {
