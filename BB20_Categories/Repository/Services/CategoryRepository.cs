@@ -33,38 +33,25 @@ public class CategoryRepository : ICategoryRepository
         throw new NotImplementedException();
     }
 
-    public Task<List<CategoryDTO>> GetAllbyDisplayStatus(int displayStatus)
+    public async Task<List<DropDownDTO>> GetAllForDropDown()
     {
-        throw new NotImplementedException();
+        List<Category> categories = await _context.Categories
+                                    .Where(x => x.DeleteFlag == false)
+                                    .Select(s => new Category { CategoryId = s.CategoryId, Name = s.Name })
+                                    .AsNoTracking()
+                                    .ToListAsync();
+
+        return _mapper.Map<List<DropDownDTO>>(categories);
     }
 
-    public Task<CategoryDTO> GetAllBySearch(string categoryName)
+    public async Task<CategoryDTO> GetDataById(int categoryId)
     {
-        throw new NotImplementedException();
-    }
+        Category? categories = await _context.Categories
+                                            .Where(x => x.DeleteFlag == false && x.CategoryId == categoryId)
+                                            .Select(s => new Category { CategoryId = s.CategoryId, Name = s.Name, DisplayStatus = s.DisplayStatus })
+                                            .AsNoTracking()
+                                            .FirstOrDefaultAsync();
 
-    public Task<List<DropDownDTO>> GetAllForDropDown()
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<CategoryDTO> GetDataById(int categoryId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<CategoryDTO> AddAsync(CategoryDTO entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<CategoryDTO> RemoveAsync(int categoryId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<CategoryDTO> UpdateAsync(CategoryDTO entity)
-    {
-        throw new NotImplementedException();
+        return _mapper.Map<CategoryDTO>(categories);
     }
 }

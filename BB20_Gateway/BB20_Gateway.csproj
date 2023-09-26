@@ -4,9 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MMLib.SwaggerForOcelot" Version="4.9.0" />
     <PackageReference Include="Ocelot" Version="17.0.1" />
   </ItemGroup>
 

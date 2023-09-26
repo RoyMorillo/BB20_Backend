@@ -15,6 +15,18 @@
             </summary>
             <returns>List of categories only</returns>
         </member>
+        <member name="M:BB20_Categories.Controllers.v1.CategoryController.GetDataById(System.Int32)">
+            <summary>
+            Get a category by its ID
+            </summary>
+            <returns>category info</returns>
+        </member>
+        <member name="M:BB20_Categories.Controllers.v1.CategoryController.GetForDropDown">
+            <summary>
+            Get the list of all categories available and ready for dropdown in the front end
+            </summary>
+            <returns>Return Code and Description of the categories</returns>
+        </member>
         <member name="P:BB20_Categories.Models.Category.CategoryId">
             <summary>
             ID of the category
