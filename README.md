@@ -9,7 +9,7 @@ https://github.com/RoyMorillo/BB20_Backend/tree/Development
  Requirements:
 
 - .NET 6.0
-- Visual Studio Professional or Superior 2022
+- Visual Studio 2022 Professional or Superior
 - SQL Server Express 2022 o Development Edition 2022.
 - SQL Server Management Studio (SSMS) 
 
