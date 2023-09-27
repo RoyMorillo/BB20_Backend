@@ -21,7 +21,15 @@ https://github.com/RoyMorillo/BB20_Backend/tree/Development
 - Connect to Sql Server using SQL Server Management Studio.
 - In Visual Studio Open the project BB20_Database.
 - Copy the content of the script BB20_Create_Database.sql and run in SSMS.
-- Do the same with the following scripts: BB20_Category_Structure_Data.sql, BB20_SubCategory_Structure_Data.sql, BB20_InteriorCategories_Structure_Data.sql, BB20_Content_Structure_Data.sql, BB20_ContentFile_Structure_Data.sql, BB20_ContentAudio_Structure_Data.sql, BB20_ContentDisplayOption_Structure_Data.sql, BB20_ContentVideo_Structure_Data.sql
+- Do the same with the following scripts: 
+    - BB20_Category_Structure_Data.sql
+    - BB20_SubCategory_Structure_Data.sql
+    - BB20_InteriorCategories_Structure_Data.sql
+    - BB20_Content_Structure_Data.sql
+    - BB20_ContentFile_Structure_Data.sql
+    - BB20_ContentAudio_Structure_Data.sql
+    - BB20_ContentDisplayOption_Structure_Data.sql
+    - BB20_ContentVideo_Structure_Data.sql
 - Run Visual studio.
 
 ## 🔗 Links URLs
