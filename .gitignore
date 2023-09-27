@@ -396,3 +396,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/.vs/BB20/v17/.suo
+/.vs/ProjectEvaluation/bb20.projects.v7.bin
+/.vs/ProjectEvaluation/bb20.metadata.v7.bin
+/.vs/BB20/v17/.futdcache.v2
+/.vs/BB20/DesignTimeBuild/.dtbcache.v2
