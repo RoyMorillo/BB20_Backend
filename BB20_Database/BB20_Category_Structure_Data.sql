@@ -1,6 +1,6 @@
 ﻿USE [BB20_Categories]
 GO
-/****** Object:  Table [dbo].[Category]    Script Date: 26/9/2023 8:17:07 p. m. ******/
+/****** Object:  Table [dbo].[Category]    Script Date: 27/9/2023 2:09:07 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -28,6 +28,12 @@ GO
 INSERT [dbo].[Category] ([CategoryID], [Name], [DisplayStatus], [CreatedDate], [UpdatedDate], [DeleteFlag]) VALUES (3, N'Intentions', 0, CAST(N'2023-09-26T13:31:00.8300000' AS DateTime2), CAST(N'2023-09-26T13:31:00.8300000' AS DateTime2), 0)
 GO
 SET IDENTITY_INSERT [dbo].[Category] OFF
+GO
+/****** Object:  Index [IX_Category]    Script Date: 27/9/2023 2:09:07 p. m. ******/
+CREATE NONCLUSTERED INDEX [IX_Category] ON [dbo].[Category]
+(
+	[CategoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[Category] ADD  CONSTRAINT [DF_Category_Status]  DEFAULT ((0)) FOR [DisplayStatus]
 GO

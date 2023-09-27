@@ -1,6 +1,6 @@
 ﻿USE [BB20_ContentDisplayOption]
 GO
-/****** Object:  Table [dbo].[ContentDisplayOption]    Script Date: 26/9/2023 8:28:00 p. m. ******/
+/****** Object:  Table [dbo].[ContentDisplayOption]    Script Date: 27/9/2023 2:16:58 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -33,7 +33,7 @@ CREATE TABLE [dbo].[ContentDisplayOption](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DisplayOptionCategory]    Script Date: 26/9/2023 8:28:00 p. m. ******/
+/****** Object:  Table [dbo].[DisplayOptionCategory]    Script Date: 27/9/2023 2:16:58 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -54,6 +54,32 @@ CREATE TABLE [dbo].[DisplayOptionCategory](
 	[ContentDisplayOptionCategoryID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_ContentDisplayOption]    Script Date: 27/9/2023 2:16:58 p. m. ******/
+CREATE NONCLUSTERED INDEX [IX_ContentDisplayOption] ON [dbo].[ContentDisplayOption]
+(
+	[ContentDisplayOptionID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_ContentID]    Script Date: 27/9/2023 2:16:58 p. m. ******/
+CREATE NONCLUSTERED INDEX [IX_ContentID] ON [dbo].[ContentDisplayOption]
+(
+	[ContentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_Categories]    Script Date: 27/9/2023 2:16:58 p. m. ******/
+CREATE NONCLUSTERED INDEX [IX_Categories] ON [dbo].[DisplayOptionCategory]
+(
+	[CategoryID] ASC,
+	[SubCategoryID] ASC,
+	[InteriorCategoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_DisplayOptionCategory]    Script Date: 27/9/2023 2:16:58 p. m. ******/
+CREATE NONCLUSTERED INDEX [IX_DisplayOptionCategory] ON [dbo].[DisplayOptionCategory]
+(
+	[ContentDisplayOptionCategoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[ContentDisplayOption] ADD  CONSTRAINT [DF_ContentDisplayOption_DOShowComment]  DEFAULT ((0)) FOR [DOShowComment]
 GO

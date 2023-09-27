@@ -12,7 +12,7 @@ namespace BB20_Categories.Models
         /// <summary>
         /// Name of the category
         /// </summary>
-        public string Name { get; set; } = null!;
+        public string Name { get; set; }
         /// <summary>
         /// Status of the category (display = 0 or hidden = 1)
         /// </summary>
@@ -32,6 +32,6 @@ namespace BB20_Categories.Models
         /// <summary>
         /// This field is for the management of the concurrency
         /// </summary>
-        public byte[]? RowVersion { get; set; }
+        public byte[] RowVersion { get; set; }
     }
 }
