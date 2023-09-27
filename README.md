@@ -38,7 +38,7 @@ https://github.com/RoyMorillo/BB20_Backend/tree/Development
 
 ![Logo](https://githubbb20.s3.amazonaws.com/Start+Project+setup.jpg)
 
-- Run Visual studio.
+- Run the project in Visual studio with F5.
 
 ## 🔗 Links URLs
 
