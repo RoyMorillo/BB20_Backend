@@ -1,6 +1,6 @@
 ﻿USE [BB20_ContentFile]
 GO
-/****** Object:  Table [dbo].[ContentFile]    Script Date: 27/9/2023 2:18:23 p. m. ******/
+/****** Object:  Table [dbo].[ContentFile]    Script Date: 27/9/2023 7:56:19 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -8,7 +8,7 @@ GO
 CREATE TABLE [dbo].[ContentFile](
 	[ContentFileID] [int] IDENTITY(1,1) NOT NULL,
 	[ContentID] [int] NOT NULL,
-	[AssociatedFiles] [varbinary](max) NULL,
+	[AssociatedFiles] [nvarchar](max) NULL,
 	[ShowTerms] [bit] NOT NULL,
 	[AssociatedFileTitle] [nvarchar](75) NULL,
 	[CreatedDate] [datetime2](7) NOT NULL,
@@ -21,13 +21,13 @@ CREATE TABLE [dbo].[ContentFile](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ContentFile]    Script Date: 27/9/2023 2:18:23 p. m. ******/
+/****** Object:  Index [IX_ContentFile]    Script Date: 27/9/2023 7:56:19 p. m. ******/
 CREATE NONCLUSTERED INDEX [IX_ContentFile] ON [dbo].[ContentFile]
 (
 	[ContentFileID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ContentID]    Script Date: 27/9/2023 2:18:23 p. m. ******/
+/****** Object:  Index [IX_ContentID]    Script Date: 27/9/2023 7:56:19 p. m. ******/
 CREATE NONCLUSTERED INDEX [IX_ContentID] ON [dbo].[ContentFile]
 (
 	[ContentID] ASC
