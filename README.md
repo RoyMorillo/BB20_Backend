@@ -51,9 +51,11 @@ https://github.com/RoyMorillo/BB20_Backend/tree/Development
     - /subcategory/getall [GET]
     - /subcategory/getalltree [GET]
     - /subcategory/GetDataById/{subCategoryId} [GET]
+    - /subcategory/GetDataByCategoryId/{categoryId} [GET]
     - /subcategory/GetForDropDown [GET]
     - /interiorcategory/getall [GET]
     - /interiorcategory/GetDataById/{interiorCategoryId} [GET]
+    - /interiorcategory/GetDataBySubCategoryId/{subCategoryId} [GET]
     - /interiorcategory/GetForDropDown [GET]
 
 ## 👓 Authors
