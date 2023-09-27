@@ -23,40 +23,6 @@ public class ContentRepository : IContentRepository
     {
         List<Content> contents = await _context.Contents
                                     .Where(x => x.DeleteFlag == false)
-                                    .Select(s => new Content
-                                    {
-                                        ContentId = s.ContentId,
-                                        Title = s.Title,
-                                        DisplayStatus = s.DisplayStatus,
-                                        PrettyUrl = s.PrettyUrl,
-                                        Subtittle = s.Subtittle,
-                                        Headline = s.Headline,
-                                        Author = s.Author,
-                                        DocumentDate = s.DocumentDate,
-                                        Teaser = s.Teaser,
-                                        Stticon = s.Stticon,
-                                        SttonlyHomePage = s.SttonlyHomePage,
-                                        Stttitle = s.Stttitle,
-                                        SttbuttonText = s.SttbuttonText,
-                                        SttbuttonLink = s.SttbuttonLink,
-                                        MainText = s.MainText,
-                                        MetaDescription = s.MetaDescription,
-                                        Icon = s.Icon,
-                                        LinkUrl1 = s.LinkUrl1,
-                                        LinkUrl2 = s.LinkUrl2,
-                                        LinkUrl3 = s.LinkUrl3,
-                                        LinkTittle1 = s.LinkTittle1,
-                                        LinkTittle2 = s.LinkTittle2,
-                                        LinkTittle3 = s.LinkTittle3,
-                                        OpenNewWindows = s.OpenNewWindows,
-                                        Share = s.Share,
-                                        SelectImage1 = s.SelectImage1,
-                                        SelectImage2 = s.SelectImage2,
-                                        SpanImageAcross = s.SpanImageAcross,
-                                        AlignLeft = s.AlignLeft,
-                                        WrapTextAroundImages = s.WrapTextAroundImages,
-                                        Ansnotification = s.Ansnotification
-                                    })
                                     .AsNoTracking()
                                     .ToListAsync();
 
@@ -67,40 +33,6 @@ public class ContentRepository : IContentRepository
     {
         Content content = await _context.Contents
                                     .Where(x => x.DeleteFlag == false && x.ContentId == contentId)
-                                    .Select(s => new Content
-                                    {
-                                        ContentId = s.ContentId,
-                                        Title = s.Title,
-                                        DisplayStatus = s.DisplayStatus,
-                                        PrettyUrl = s.PrettyUrl,
-                                        Subtittle = s.Subtittle,
-                                        Headline = s.Headline,
-                                        Author = s.Author,
-                                        DocumentDate = s.DocumentDate,
-                                        Teaser = s.Teaser,
-                                        Stticon = s.Stticon,
-                                        SttonlyHomePage = s.SttonlyHomePage,
-                                        Stttitle = s.Stttitle,
-                                        SttbuttonText = s.SttbuttonText,
-                                        SttbuttonLink = s.SttbuttonLink,
-                                        MainText = s.MainText,
-                                        MetaDescription = s.MetaDescription,
-                                        Icon = s.Icon,
-                                        LinkUrl1 = s.LinkUrl1,
-                                        LinkUrl2 = s.LinkUrl2,
-                                        LinkUrl3 = s.LinkUrl3,
-                                        LinkTittle1 = s.LinkTittle1,
-                                        LinkTittle2 = s.LinkTittle2,
-                                        LinkTittle3 = s.LinkTittle3,
-                                        OpenNewWindows = s.OpenNewWindows,
-                                        Share = s.Share,
-                                        SelectImage1 = s.SelectImage1,
-                                        SelectImage2 = s.SelectImage2,
-                                        SpanImageAcross = s.SpanImageAcross,
-                                        AlignLeft = s.AlignLeft,
-                                        WrapTextAroundImages = s.WrapTextAroundImages,
-                                        Ansnotification = s.Ansnotification
-                                    })
                                     .AsNoTracking()
                                     .FirstOrDefaultAsync();
 
@@ -116,40 +48,6 @@ public class ContentRepository : IContentRepository
 
         List<Content> contents = await _context.Contents
                             .Where(predicate)
-                            .Select(s => new Content
-                            {
-                                ContentId = s.ContentId,
-                                Title = s.Title,
-                                DisplayStatus = s.DisplayStatus,
-                                PrettyUrl = s.PrettyUrl,
-                                Subtittle = s.Subtittle,
-                                Headline = s.Headline,
-                                Author = s.Author,
-                                DocumentDate = s.DocumentDate,
-                                Teaser = s.Teaser,
-                                Stticon = s.Stticon,
-                                SttonlyHomePage = s.SttonlyHomePage,
-                                Stttitle = s.Stttitle,
-                                SttbuttonText = s.SttbuttonText,
-                                SttbuttonLink = s.SttbuttonLink,
-                                MainText = s.MainText,
-                                MetaDescription = s.MetaDescription,
-                                Icon = s.Icon,
-                                LinkUrl1 = s.LinkUrl1,
-                                LinkUrl2 = s.LinkUrl2,
-                                LinkUrl3 = s.LinkUrl3,
-                                LinkTittle1 = s.LinkTittle1,
-                                LinkTittle2 = s.LinkTittle2,
-                                LinkTittle3 = s.LinkTittle3,
-                                OpenNewWindows = s.OpenNewWindows,
-                                Share = s.Share,
-                                SelectImage1 = s.SelectImage1,
-                                SelectImage2 = s.SelectImage2,
-                                SpanImageAcross = s.SpanImageAcross,
-                                AlignLeft = s.AlignLeft,
-                                WrapTextAroundImages = s.WrapTextAroundImages,
-                                Ansnotification = s.Ansnotification
-                            })
                             .AsNoTracking()
                             .ToListAsync();
 
@@ -164,36 +62,7 @@ public class ContentRepository : IContentRepository
                                     .Select(s => new Content
                                     {
                                         ContentId = s.ContentId,
-                                        Title = s.Title,
-                                        DisplayStatus = s.DisplayStatus,
-                                        PrettyUrl = s.PrettyUrl,
-                                        Subtittle = s.Subtittle,
-                                        Headline = s.Headline,
-                                        Author = s.Author,
-                                        DocumentDate = s.DocumentDate,
-                                        Teaser = s.Teaser,
-                                        Stticon = s.Stticon,
-                                        SttonlyHomePage = s.SttonlyHomePage,
-                                        Stttitle = s.Stttitle,
-                                        SttbuttonText = s.SttbuttonText,
-                                        SttbuttonLink = s.SttbuttonLink,
-                                        MainText = s.MainText,
-                                        MetaDescription = s.MetaDescription,
-                                        Icon = s.Icon,
-                                        LinkUrl1 = s.LinkUrl1,
-                                        LinkUrl2 = s.LinkUrl2,
-                                        LinkUrl3 = s.LinkUrl3,
-                                        LinkTittle1 = s.LinkTittle1,
-                                        LinkTittle2 = s.LinkTittle2,
-                                        LinkTittle3 = s.LinkTittle3,
-                                        OpenNewWindows = s.OpenNewWindows,
-                                        Share = s.Share,
-                                        SelectImage1 = s.SelectImage1,
-                                        SelectImage2 = s.SelectImage2,
-                                        SpanImageAcross = s.SpanImageAcross,
-                                        AlignLeft = s.AlignLeft,
-                                        WrapTextAroundImages = s.WrapTextAroundImages,
-                                        Ansnotification = s.Ansnotification
+                                        Title = s.Title
                                     })
                                     .AsNoTracking()
                                     .ToListAsync();
@@ -228,28 +97,13 @@ public class ContentRepository : IContentRepository
         {
             Content content = _mapper.Map<ContentDTO, Content>(entity);
 
-            Content contentFromDb = _context.Contents.Where(x => x.ContentId == content.ContentId && x.DeleteFlag == false)
-                                                        .Select(s => new Content
-                                                        {
-                                                            CreatedDate = s.CreatedDate,
-                                                            RowVersion = s.RowVersion
-                                                        })
-                                                        .AsNoTracking()
-                                                        .FirstOrDefault();
+            content.UpdatedDate = DateTime.Now;
+            content.DeleteFlag = false;
 
-            if (contentFromDb != null)
-            {
-                content.CreatedDate = contentFromDb.CreatedDate;
-                content.UpdatedDate = DateTime.Now;
-                content.DeleteFlag = false;
-                content.RowVersion = contentFromDb.RowVersion;
+            _context.Contents.Update(content);
+            await _context.SaveChangesAsync();
+            return true;
 
-                _context.Contents.Update(content);
-                await _context.SaveChangesAsync();
-                return true;
-            }
-
-            return false;
         }
         catch (Exception)
         {
@@ -261,7 +115,9 @@ public class ContentRepository : IContentRepository
     {
         try
         {
-            Content content = _context.Contents.Find(contentId);
+            Content content = _context.Contents
+                                .Where(x => x.ContentId == contentId)
+                                .FirstOrDefault();
 
             if (content == null)
             {
