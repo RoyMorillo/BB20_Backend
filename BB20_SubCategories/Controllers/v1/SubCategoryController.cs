@@ -172,6 +172,56 @@ public class SubCategoryController : ControllerBase
     }
 
     /// <summary>
+    /// Get a list sub category by its Category ID
+    /// </summary>
+    /// <returns>sub category list info</returns>
+    [HttpGet("GetDataByCategoryId/{categoryId}", Name = nameof(GetDataByCategoryId))]
+    [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<List<SubCategoryDTO>>>))]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> GetDataByCategoryId(int categoryId)
+    {
+        ResponseDTO<DataDTO<List<SubCategoryDTO>>> response = new ResponseDTO<DataDTO<List<SubCategoryDTO>>>();
+        DataDTO<List<SubCategoryDTO>> data = new DataDTO<List<SubCategoryDTO>>();
+
+        ErrorDTO error = new()
+        {
+            innerException = string.Empty,
+            message = string.Empty
+        };
+
+        try
+        {
+            data.SubCategories = await _subCategoryRepository.GetDataByCategoryId(categoryId);
+
+            if (data.SubCategories != null)
+            {
+                response.success = true;
+                response.error = error;
+                response.data = data;
+                return Ok(response);
+            }
+
+            response.success = true;
+            response.error = error;
+            response.data = data;
+
+            return NotFound(response);
+        }
+        catch (Exception ex)
+        {
+            error.message = ex.Message;
+            error.innerException = ex.InnerException?.Message;
+
+            response.success = false;
+            response.error = error;
+            response.data = data;
+
+            return BadRequest(response);
+        }
+    }
+
+    /// <summary>
     /// Get the list of all sub categories available and ready for dropdown in the front end
     /// </summary>
     /// <returns>Return Code and Description of the sub categories</returns>

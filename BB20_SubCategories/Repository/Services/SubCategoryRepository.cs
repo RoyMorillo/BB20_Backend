@@ -109,6 +109,37 @@ public class SubCategoryRepository : ISubCategoryRepository
         return subCategoryTree;
     }
 
+    public async Task<List<SubCategoryDTO>> GetDataByCategoryId(int CategoryId)
+    {
+        List<SubCategory> subCategories = await _context.SubCategories
+                                            .Where(x => x.DeleteFlag == false && x.CategoryId == CategoryId)
+                                            .Include(x => x.SubCategoryThumbNails)
+                                            .Select(s => new SubCategory
+                                            {
+                                                SubCategoryId = s.SubCategoryId,
+                                                CategoryId = s.CategoryId,
+                                                Name = s.Name,
+                                                DisplayStatus = s.DisplayStatus,
+                                                FtinHeaderAndFooter = s.FtinHeaderAndFooter,
+                                                FtinBannerIcon = s.FtinBannerIcon,
+                                                FtinTitle = s.FtinTitle,
+                                                Icon = s.Icon,
+                                                UseExternalUrl = s.UseExternalUrl,
+                                                CategoryLandPageDesc = s.CategoryLandPageDesc,
+                                                CategoryLandPageHead = s.CategoryLandPageHead,
+                                                SubCategoryLandPageDesc = s.SubCategoryLandPageDesc,
+                                                IsActive = s.IsActive,
+                                                Static = s.Static,
+                                                Seotitle = s.Seotitle,
+                                                SeoprettyUrl = s.SeoprettyUrl,
+                                                SeodescMetadata = s.SeodescMetadata
+                                            })
+                                            .AsNoTracking()
+                                            .ToListAsync();
+
+        return _mapper.Map<List<SubCategoryDTO>>(subCategories);
+    }
+
     public async Task<SubCategoryDTO> GetDataById(int subCategoryId)
     {
         SubCategory? subCategories = await _context.SubCategories

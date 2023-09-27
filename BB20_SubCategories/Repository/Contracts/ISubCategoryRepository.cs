@@ -7,5 +7,6 @@ public interface ISubCategoryRepository
     public Task<List<SubCategoryDTO>> GetAll();
     public Task<List<SubCategoryTreeDTO>> GetAllTree();
     public Task<SubCategoryDTO> GetDataById(int subCategoryId);
+    public Task<List<SubCategoryDTO>> GetDataByCategoryId(int CategoryId);
     public Task<List<DropDownDTO>> GetAllForDropDown();
 }
