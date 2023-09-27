@@ -11,7 +11,7 @@ https://github.com/RoyMorillo/BB20_Backend/tree/Development
 - .NET 6.0
 - Visual Studio 2022
 - SQL Server Express 2022 o Development Edition 2022.
-- SQL Server Management Studio   
+- SQL Server Management Studio (SSMS) 
 
 ## ⚙ Setup (Run Locally)
 
