@@ -1,6 +1,6 @@
 ﻿USE [BB20_SubCategories]
 GO
-/****** Object:  Table [dbo].[SubCategory]    Script Date: 26/9/2023 8:21:08 p. m. ******/
+/****** Object:  Table [dbo].[SubCategory]    Script Date: 27/9/2023 2:11:46 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -33,7 +33,7 @@ CREATE TABLE [dbo].[SubCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SubCategoryThumbNail]    Script Date: 26/9/2023 8:21:08 p. m. ******/
+/****** Object:  Table [dbo].[SubCategoryThumbNail]    Script Date: 27/9/2023 2:11:46 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -87,6 +87,30 @@ GO
 INSERT [dbo].[SubCategory] ([SubCategoryID], [CategoryID], [Name], [DisplayStatus], [FTinHeaderAndFooter], [FTInBannerIcon], [FTInTitle], [Icon], [UseExternalURL], [CategoryLandPageDesc], [CategoryLandPageHead], [SubCategoryLandPageDesc], [IsActive], [Static], [SEOTitle], [SEOPrettyURL], [SEODescMetadata], [CreatedDate], [UpdatedDate], [DeleteFlag]) VALUES (16, 2, N'eXp Soluutions', 0, 0, 0, 0, N'https://gmbb20.s3.amazonaws.com/home/crop_eXp_Solutions_650x650.png', 0, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, CAST(N'2023-09-26T16:31:48.4633333' AS DateTime2), CAST(N'2023-09-26T16:31:48.4633333' AS DateTime2), 0)
 GO
 SET IDENTITY_INSERT [dbo].[SubCategory] OFF
+GO
+/****** Object:  Index [IX_Category]    Script Date: 27/9/2023 2:11:46 p. m. ******/
+CREATE NONCLUSTERED INDEX [IX_Category] ON [dbo].[SubCategory]
+(
+	[CategoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_SubCategory]    Script Date: 27/9/2023 2:11:46 p. m. ******/
+CREATE NONCLUSTERED INDEX [IX_SubCategory] ON [dbo].[SubCategory]
+(
+	[SubCategoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_SubCategoryID]    Script Date: 27/9/2023 2:11:46 p. m. ******/
+CREATE NONCLUSTERED INDEX [IX_SubCategoryID] ON [dbo].[SubCategoryThumbNail]
+(
+	[SubCategoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_SubCategoryThumbNail]    Script Date: 27/9/2023 2:11:46 p. m. ******/
+CREATE NONCLUSTERED INDEX [IX_SubCategoryThumbNail] ON [dbo].[SubCategoryThumbNail]
+(
+	[ThumbNailID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[SubCategory] ADD  CONSTRAINT [DF_SubCategory_Status]  DEFAULT ((0)) FOR [DisplayStatus]
 GO

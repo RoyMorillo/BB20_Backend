@@ -32,6 +32,10 @@ namespace BB20_InteriorCategories.Models
             {
                 entity.ToTable("InteriorCategory");
 
+                entity.HasIndex(e => new { e.SubCategoryId, e.CategoryId }, "IX_Categories");
+
+                entity.HasIndex(e => e.InteriorCategoryId, "IX_InteriorCategory");
+
                 entity.Property(e => e.InteriorCategoryId).HasColumnName("InteriorCategoryID");
 
                 entity.Property(e => e.CategoryId)

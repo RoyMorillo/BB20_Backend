@@ -33,6 +33,10 @@ namespace BB20_SubCategories.Models
             {
                 entity.ToTable("SubCategory");
 
+                entity.HasIndex(e => e.CategoryId, "IX_Category");
+
+                entity.HasIndex(e => e.SubCategoryId, "IX_SubCategory");
+
                 entity.Property(e => e.SubCategoryId)
                     .HasColumnName("SubCategoryID")
                     .HasComment("ID of the sub category");
@@ -111,6 +115,10 @@ namespace BB20_SubCategories.Models
                 entity.HasKey(e => e.ThumbNailId);
 
                 entity.ToTable("SubCategoryThumbNail");
+
+                entity.HasIndex(e => e.SubCategoryId, "IX_SubCategoryID");
+
+                entity.HasIndex(e => e.ThumbNailId, "IX_SubCategoryThumbNail");
 
                 entity.Property(e => e.ThumbNailId)
                     .HasColumnName("ThumbNailID")

@@ -16,7 +16,7 @@ namespace BB20_Categories.Models
         {
         }
 
-        public virtual DbSet<Category> Categories { get; set; } = null!;
+        public virtual DbSet<Category> Categories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,6 +32,8 @@ namespace BB20_Categories.Models
             {
                 entity.ToTable("Category");
 
+                entity.HasIndex(e => e.CategoryId, "IX_Category");
+
                 entity.Property(e => e.CategoryId)
                     .HasColumnName("CategoryID")
                     .HasComment("ID of the category");
@@ -45,6 +47,7 @@ namespace BB20_Categories.Models
                 entity.Property(e => e.DisplayStatus).HasComment("Status of the category (display = 0 or hidden = 1)");
 
                 entity.Property(e => e.Name)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .HasComment("Name of the category");
 
