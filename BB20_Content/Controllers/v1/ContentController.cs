@@ -124,7 +124,7 @@ public class ContentController : ControllerBase
     /// Get a content by its title
     /// </summary>
     /// <returns>content list info</returns>
-    [HttpGet("GetDataById/{contentId}", Name = nameof(GetDataById))]
+    [HttpGet("GetAllByTitle/{title}", Name = nameof(GetAllByTitle))]
     [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<List<ContentDTO>>>))]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
@@ -229,7 +229,7 @@ public class ContentController : ControllerBase
     [HttpPost("Create", Name = nameof(Create))]
     [ProducesResponseType(201, Type = typeof(int))]
     [ProducesResponseType(400)]
-    public async Task<IActionResult> Create([FromForm] ContentDTO contentDTO)
+    public async Task<IActionResult> Create([FromBody] ContentDTO contentDTO)
     {
         ResponseDTO<DataDTO<int>> response = new ResponseDTO<DataDTO<int>>();
         DataDTO<int> datos = new DataDTO<int>();
@@ -308,7 +308,7 @@ public class ContentController : ControllerBase
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async Task<IActionResult> Update([FromForm] ContentDTO contentDTO)
+    public async Task<IActionResult> Update([FromBody] ContentDTO contentDTO)
     {
         ResponseDTO<bool> response = new ResponseDTO<bool>();
 

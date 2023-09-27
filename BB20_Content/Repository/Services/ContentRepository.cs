@@ -228,13 +228,14 @@ public class ContentRepository : IContentRepository
         {
             Content content = _mapper.Map<ContentDTO, Content>(entity);
 
-            Content contentFromDb = _context.Contents.Where(x => x.ContentId == content.ContentId && x.DeleteFlag == false).Select(s => new Content { CreatedDate = s.CreatedDate }).AsNoTracking().FirstOrDefault();
+            Content contentFromDb = _context.Contents.Where(x => x.ContentId == content.ContentId && x.DeleteFlag == false).AsNoTracking().FirstOrDefault();
 
             if (contentFromDb != null)
             {
                 content.CreatedDate = contentFromDb.CreatedDate;
                 content.UpdatedDate = DateTime.Now;
                 content.DeleteFlag = false;
+                content.RowVersion = contentFromDb.RowVersion;
 
                 _context.Contents.Update(content);
                 await _context.SaveChangesAsync();
