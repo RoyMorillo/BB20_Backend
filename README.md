@@ -9,7 +9,7 @@ https://github.com/RoyMorillo/BB20_Backend/tree/Development
  Requirements:
 
 - .NET 6.0
-- Visual Studio 2022 Professional or Superior
+- Visual Studio 2022 Profesional or Superior
 - SQL Server Express 2022 o Development Edition 2022.
 - SQL Server Management Studio (SSMS) 
 
@@ -30,6 +30,14 @@ https://github.com/RoyMorillo/BB20_Backend/tree/Development
     - BB20_ContentAudio_Structure_Data.sql
     - BB20_ContentDisplayOption_Structure_Data.sql
     - BB20_ContentVideo_Structure_Data.sql
+- To run multiple projects at the same time, right click on the Solution of the project and go to Configure Startups Projects
+
+![Logo](https://githubbb20.s3.amazonaws.com/startup+projects.jpg)
+
+- Then change the configurations as follows and activate the projects wanted to run at the same time.
+
+![Logo](https://githubbb20.s3.amazonaws.com/Start+Project+setup.jpg)
+
 - Run Visual studio.
 
 ## 🔗 Links URLs
