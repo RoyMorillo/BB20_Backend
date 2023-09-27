@@ -6,5 +6,6 @@ public interface IinteriorCategoryRepository
 {
     public Task<List<InteriorCategoryDTO>> GetAll();
     public Task<InteriorCategoryDTO> GetDataById(int interiorCategoryId);
+    public Task<List<InteriorCategoryDTO>> GetDataBySubCategoryId(int subCategoryId);
     public Task<List<DropDownDTO>> GetAllForDropDown();
 }

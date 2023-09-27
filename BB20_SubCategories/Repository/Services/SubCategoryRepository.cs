@@ -109,10 +109,10 @@ public class SubCategoryRepository : ISubCategoryRepository
         return subCategoryTree;
     }
 
-    public async Task<List<SubCategoryDTO>> GetDataByCategoryId(int CategoryId)
+    public async Task<List<SubCategoryDTO>> GetDataByCategoryId(int categoryId)
     {
         List<SubCategory> subCategories = await _context.SubCategories
-                                            .Where(x => x.DeleteFlag == false && x.CategoryId == CategoryId)
+                                            .Where(x => x.DeleteFlag == false && x.CategoryId == categoryId)
                                             .Include(x => x.SubCategoryThumbNails)
                                             .Select(s => new SubCategory
                                             {

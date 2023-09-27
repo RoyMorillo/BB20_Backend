@@ -121,6 +121,56 @@ public class InteriorCategoryController : ControllerBase
     }
 
     /// <summary>
+    /// Get a list of interior categories by its subCategoryID
+    /// </summary>
+    /// <returns>interior category info</returns>
+    [HttpGet("GetDataBySubCategoryId/{subCategoryId}", Name = nameof(GetDataBySubCategoryId))]
+    [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<List<InteriorCategoryDTO>>>))]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> GetDataBySubCategoryId(int subCategoryId)
+    {
+        ResponseDTO<DataDTO<List<InteriorCategoryDTO>>> response = new ResponseDTO<DataDTO<List<InteriorCategoryDTO>>>();
+        DataDTO<List<InteriorCategoryDTO>> data = new DataDTO<List<InteriorCategoryDTO>>();
+
+        ErrorDTO error = new()
+        {
+            innerException = string.Empty,
+            message = string.Empty
+        };
+
+        try
+        {
+            data.InteriorCategories = await _interiorCategoryRepository.GetDataBySubCategoryId(subCategoryId);
+
+            if (data.InteriorCategories != null)
+            {
+                response.success = true;
+                response.error = error;
+                response.data = data;
+                return Ok(response);
+            }
+
+            response.success = true;
+            response.error = error;
+            response.data = data;
+
+            return NotFound(response);
+        }
+        catch (Exception ex)
+        {
+            error.message = ex.Message;
+            error.innerException = ex.InnerException?.Message;
+
+            response.success = false;
+            response.error = error;
+            response.data = data;
+
+            return BadRequest(response);
+        }
+    }
+
+    /// <summary>
     /// Get the list of all interior categories available and ready for dropdown in the front end
     /// </summary>
     /// <returns>Return Code and Description of the interior categories</returns>
