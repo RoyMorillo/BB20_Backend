@@ -71,6 +71,57 @@ public class CategoryController : ControllerBase
     }
 
     /// <summary>
+    /// Get all categories and subcategories and interior categories in tree structure
+    /// </summary>
+    /// <returns>List of categories and subcategories and interior categories in tree structure</returns>
+    [HttpGet]
+    [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<List<CategoryTreeDTO>>>))]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(404)]
+    [Route("GetAllTree")]
+    public async Task<IActionResult> GetAllTree()
+    {
+        ResponseDTO<DataDTO<List<CategoryTreeDTO>>> response = new ResponseDTO<DataDTO<List<CategoryTreeDTO>>>();
+        DataDTO<List<CategoryTreeDTO>> data = new DataDTO<List<CategoryTreeDTO>>();
+
+        ErrorDTO error = new()
+        {
+            innerException = string.Empty,
+            message = string.Empty
+        };
+
+        try
+        {
+            data.Categories = await _categoryRepository.GetAllTree();
+
+            if (data.Categories.Count > 0)
+            {
+                response.success = true;
+                response.error = error;
+                response.data = data;
+                return Ok(response);
+            }
+
+            response.success = true;
+            response.error = error;
+            response.data = data;
+
+            return NotFound(response);
+        }
+        catch (Exception ex)
+        {
+            error.message = ex.Message;
+            error.innerException = ex.InnerException?.Message;
+
+            response.success = false;
+            response.error = error;
+            response.data = data;
+
+            return BadRequest(response);
+        }
+    }
+
+    /// <summary>
     /// Get a category by its ID
     /// </summary>
     /// <returns>category info</returns>

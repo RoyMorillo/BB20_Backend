@@ -1,0 +1,8 @@
+{
+  "Microservices": {
+    "subCategory": {
+      "BaseUrl": "https://localhost:7226",
+      "EndPoint": "/api/v1/SubCategory/GetAllTree"
+    }
+  }
+}
