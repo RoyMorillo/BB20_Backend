@@ -55,6 +55,10 @@ namespace BB20_SubCategories.Models
 
                 entity.Property(e => e.DeleteFlag).HasComment("If the row is logicaly deleted (0 = false and 1 = true)");
 
+                entity.Property(e => e.Description)
+                    .HasMaxLength(75)
+                    .HasComment("Description of the sub category");
+
                 entity.Property(e => e.DisplayStatus).HasComment("Status of the sub category (display = 0 or hidden = 1)");
 
                 entity.Property(e => e.FtinBannerIcon)

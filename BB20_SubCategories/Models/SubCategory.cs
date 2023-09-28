@@ -23,6 +23,10 @@ namespace BB20_SubCategories.Models
         /// </summary>
         public string Name { get; set; } = null!;
         /// <summary>
+        /// Description of the sub category
+        /// </summary>
+        public string? Description { get; set; }
+        /// <summary>
         /// Status of the sub category (display = 0 or hidden = 1)
         /// </summary>
         public int DisplayStatus { get; set; }

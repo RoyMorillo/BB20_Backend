@@ -26,26 +26,6 @@ public class SubCategoryRepository : ISubCategoryRepository
         List<SubCategory> subCategories = await _context.SubCategories
                                             .Where(x => x.DeleteFlag == false)
                                             .Include(x => x.SubCategoryThumbNails)
-                                            .Select(s => new SubCategory
-                                            {
-                                                SubCategoryId = s.SubCategoryId,
-                                                CategoryId = s.CategoryId,
-                                                Name = s.Name,
-                                                DisplayStatus = s.DisplayStatus,
-                                                FtinHeaderAndFooter = s.FtinHeaderAndFooter,
-                                                FtinBannerIcon = s.FtinBannerIcon,
-                                                FtinTitle = s.FtinTitle,
-                                                Icon = s.Icon,
-                                                UseExternalUrl = s.UseExternalUrl,
-                                                CategoryLandPageDesc = s.CategoryLandPageDesc,
-                                                CategoryLandPageHead = s.CategoryLandPageHead,
-                                                SubCategoryLandPageDesc = s.SubCategoryLandPageDesc,
-                                                IsActive = s.IsActive,
-                                                Static = s.Static,
-                                                Seotitle = s.Seotitle,
-                                                SeoprettyUrl = s.SeoprettyUrl,
-                                                SeodescMetadata = s.SeodescMetadata
-                                            })
                                             .AsNoTracking()
                                             .ToListAsync();
 
@@ -74,26 +54,6 @@ public class SubCategoryRepository : ISubCategoryRepository
         List<SubCategory> subCategories = await _context.SubCategories
                                     .Where(x => x.DeleteFlag == false)
                                     .Include(x => x.SubCategoryThumbNails)
-                                    .Select(s => new SubCategory
-                                    {
-                                        SubCategoryId = s.SubCategoryId,
-                                        CategoryId = s.CategoryId,
-                                        Name = s.Name,
-                                        DisplayStatus = s.DisplayStatus,
-                                        FtinHeaderAndFooter = s.FtinHeaderAndFooter,
-                                        FtinBannerIcon = s.FtinBannerIcon,
-                                        FtinTitle = s.FtinTitle,
-                                        Icon = s.Icon,
-                                        UseExternalUrl = s.UseExternalUrl,
-                                        CategoryLandPageDesc = s.CategoryLandPageDesc,
-                                        CategoryLandPageHead = s.CategoryLandPageHead,
-                                        SubCategoryLandPageDesc = s.SubCategoryLandPageDesc,
-                                        IsActive = s.IsActive,
-                                        Static = s.Static,
-                                        Seotitle = s.Seotitle,
-                                        SeoprettyUrl = s.SeoprettyUrl,
-                                        SeodescMetadata = s.SeodescMetadata
-                                    })
                                     .AsNoTracking()
                                     .ToListAsync();
 
@@ -114,26 +74,6 @@ public class SubCategoryRepository : ISubCategoryRepository
         List<SubCategory> subCategories = await _context.SubCategories
                                             .Where(x => x.DeleteFlag == false && x.CategoryId == categoryId)
                                             .Include(x => x.SubCategoryThumbNails)
-                                            .Select(s => new SubCategory
-                                            {
-                                                SubCategoryId = s.SubCategoryId,
-                                                CategoryId = s.CategoryId,
-                                                Name = s.Name,
-                                                DisplayStatus = s.DisplayStatus,
-                                                FtinHeaderAndFooter = s.FtinHeaderAndFooter,
-                                                FtinBannerIcon = s.FtinBannerIcon,
-                                                FtinTitle = s.FtinTitle,
-                                                Icon = s.Icon,
-                                                UseExternalUrl = s.UseExternalUrl,
-                                                CategoryLandPageDesc = s.CategoryLandPageDesc,
-                                                CategoryLandPageHead = s.CategoryLandPageHead,
-                                                SubCategoryLandPageDesc = s.SubCategoryLandPageDesc,
-                                                IsActive = s.IsActive,
-                                                Static = s.Static,
-                                                Seotitle = s.Seotitle,
-                                                SeoprettyUrl = s.SeoprettyUrl,
-                                                SeodescMetadata = s.SeodescMetadata
-                                            })
                                             .AsNoTracking()
                                             .ToListAsync();
 
@@ -145,26 +85,6 @@ public class SubCategoryRepository : ISubCategoryRepository
         SubCategory? subCategories = await _context.SubCategories
                                             .Where(x => x.DeleteFlag == false && x.SubCategoryId == subCategoryId)
                                             .Include(x => x.SubCategoryThumbNails)
-                                            .Select(s => new SubCategory
-                                            {
-                                                SubCategoryId = s.SubCategoryId,
-                                                CategoryId = s.CategoryId,
-                                                Name = s.Name,
-                                                DisplayStatus = s.DisplayStatus,
-                                                FtinHeaderAndFooter = s.FtinHeaderAndFooter,
-                                                FtinBannerIcon = s.FtinBannerIcon,
-                                                FtinTitle = s.FtinTitle,
-                                                Icon = s.Icon,
-                                                UseExternalUrl = s.UseExternalUrl,
-                                                CategoryLandPageDesc = s.CategoryLandPageDesc,
-                                                CategoryLandPageHead = s.CategoryLandPageHead,
-                                                SubCategoryLandPageDesc = s.SubCategoryLandPageDesc,
-                                                IsActive = s.IsActive,
-                                                Static = s.Static,
-                                                Seotitle = s.Seotitle,
-                                                SeoprettyUrl = s.SeoprettyUrl,
-                                                SeodescMetadata = s.SeodescMetadata
-                                            })
                                             .AsNoTracking()
                                             .FirstOrDefaultAsync();
 
