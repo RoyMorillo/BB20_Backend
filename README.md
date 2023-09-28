@@ -69,7 +69,13 @@ https://github.com/RoyMorillo/BB20_Backend/tree/Development
     - /ContentFile/GetAllByContentId/{contentId} [GET]
     - /ContentFile/Create [POST]
     - /ContentFile/Update [PUT]
-    - /ContentFile/Delete/{contentFileId} [DELETE]
+    - /ContentFile/Delete/{contentFileId} [DELETE]    - 
+    - /ContentAudio/getall [GET]
+    - /ContentAudio/GetDataById/{contentAudioId} [GET]
+    - /ContentAudio/GetAllByContentId/{contentId} [GET]
+    - /ContentAudio/Create [POST]
+    - /ContentAudio/Update [PUT]
+    - /ContentAudio/Delete/{contentAudioId} [DELETE]
 
 ## 👓 Authors
 
