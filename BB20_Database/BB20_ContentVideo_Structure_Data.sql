@@ -1,6 +1,6 @@
 ﻿USE [BB20_ContentVideo]
 GO
-/****** Object:  Table [dbo].[ContentVideo]    Script Date: 27/9/2023 2:19:48 p. m. ******/
+/****** Object:  Table [dbo].[ContentVideo]    Script Date: 28/9/2023 10:58:42 a. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[ContentVideo](
 	[VIDEOFiles] [nvarchar](max) NULL,
 	[VIDEOWidth] [int] NULL,
 	[VIDEOHeight] [int] NULL,
-	[VIDEOAutostart] [bit] NULL,
+	[VIDEOAutostart] [bit] NOT NULL,
 	[VIDEOLoop] [bit] NOT NULL,
 	[VIDEOIcon] [nvarchar](max) NULL,
 	[VIDEOCaption] [nvarchar](500) NULL,
@@ -25,17 +25,19 @@ CREATE TABLE [dbo].[ContentVideo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ContentID]    Script Date: 27/9/2023 2:19:48 p. m. ******/
+/****** Object:  Index [IX_ContentID]    Script Date: 28/9/2023 10:58:42 a. m. ******/
 CREATE NONCLUSTERED INDEX [IX_ContentID] ON [dbo].[ContentVideo]
 (
 	[ContentID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ContentVideo]    Script Date: 27/9/2023 2:19:48 p. m. ******/
+/****** Object:  Index [IX_ContentVideo]    Script Date: 28/9/2023 10:58:42 a. m. ******/
 CREATE NONCLUSTERED INDEX [IX_ContentVideo] ON [dbo].[ContentVideo]
 (
 	[ContentVideoID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[ContentVideo] ADD  CONSTRAINT [DF_ContentVideo_VIDEOAutostart]  DEFAULT ((0)) FOR [VIDEOAutostart]
 GO
 ALTER TABLE [dbo].[ContentVideo] ADD  CONSTRAINT [DF_ContentVideo_VIDEOLoop]  DEFAULT ((0)) FOR [VIDEOLoop]
 GO
