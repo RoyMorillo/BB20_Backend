@@ -21,22 +21,6 @@ public class InteriorCategoryRepository : IinteriorCategoryRepository
     {
         List<InteriorCategory> interiorCategories = await _context.InteriorCategories
                                             .Where(x => x.DeleteFlag == false)
-                                            .Select(s => new InteriorCategory
-                                            {
-                                                InteriorCategoryId = s.InteriorCategoryId,
-                                                SubCategoryId = s.SubCategoryId,
-                                                CategoryId = s.CategoryId,
-                                                Name = s.Name,
-                                                DisplayStatus = s.DisplayStatus,
-                                                Icon = s.Icon,
-                                                CategoryLandPageDesc = s.CategoryLandPageDesc,
-                                                CategoryLandPageHead = s.CategoryLandPageHead,
-                                                SubCategoryLandPageDesc = s.SubCategoryLandPageDesc,
-                                                IsActive = s.IsActive,
-                                                Seotitle = s.Seotitle,
-                                                SeoprettyUrl = s.SeoprettyUrl,
-                                                SeodescMetadata = s.SeodescMetadata
-                                            })
                                             .AsNoTracking()
                                             .ToListAsync();
 
@@ -62,22 +46,6 @@ public class InteriorCategoryRepository : IinteriorCategoryRepository
     {
         InteriorCategory? interiorCategories = await _context.InteriorCategories
                                             .Where(x => x.DeleteFlag == false && x.InteriorCategoryId == interiorCategoryId)
-                                            .Select(s => new InteriorCategory
-                                            {
-                                                InteriorCategoryId = s.InteriorCategoryId,
-                                                SubCategoryId = s.SubCategoryId,
-                                                CategoryId = s.CategoryId,
-                                                Name = s.Name,
-                                                DisplayStatus = s.DisplayStatus,
-                                                Icon = s.Icon,
-                                                CategoryLandPageDesc = s.CategoryLandPageDesc,
-                                                CategoryLandPageHead = s.CategoryLandPageHead,
-                                                SubCategoryLandPageDesc = s.SubCategoryLandPageDesc,
-                                                IsActive = s.IsActive,
-                                                Seotitle = s.Seotitle,
-                                                SeoprettyUrl = s.SeoprettyUrl,
-                                                SeodescMetadata = s.SeodescMetadata
-                                            })
                                             .AsNoTracking()
                                             .FirstOrDefaultAsync();
 
@@ -88,22 +56,6 @@ public class InteriorCategoryRepository : IinteriorCategoryRepository
     {
         List<InteriorCategory> interiorCategories = await _context.InteriorCategories
                                     .Where(x => x.DeleteFlag == false && x.SubCategoryId == subCategoryId)
-                                    .Select(s => new InteriorCategory
-                                    {
-                                        InteriorCategoryId = s.InteriorCategoryId,
-                                        SubCategoryId = s.SubCategoryId,
-                                        CategoryId = s.CategoryId,
-                                        Name = s.Name,
-                                        DisplayStatus = s.DisplayStatus,
-                                        Icon = s.Icon,
-                                        CategoryLandPageDesc = s.CategoryLandPageDesc,
-                                        CategoryLandPageHead = s.CategoryLandPageHead,
-                                        SubCategoryLandPageDesc = s.SubCategoryLandPageDesc,
-                                        IsActive = s.IsActive,
-                                        Seotitle = s.Seotitle,
-                                        SeoprettyUrl = s.SeoprettyUrl,
-                                        SeodescMetadata = s.SeodescMetadata
-                                    })
                                     .AsNoTracking()
                                     .ToListAsync();
 

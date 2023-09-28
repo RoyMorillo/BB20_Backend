@@ -23,7 +23,6 @@ public class CategoryRepository : ICategoryRepository
     {
         List<Category> categories = await _context.Categories
                                             .Where(x => x.DeleteFlag == false)
-                                            .Select(s => new Category { CategoryId = s.CategoryId, Name = s.Name, DisplayStatus = s.DisplayStatus })
                                             .AsNoTracking()
                                             .ToListAsync();
 
@@ -36,12 +35,6 @@ public class CategoryRepository : ICategoryRepository
 
         List<Category> Categories = await _context.Categories
                                     .Where(x => x.DeleteFlag == false)
-                                    .Select(s => new Category
-                                    {
-                                        CategoryId = s.CategoryId,
-                                        Name = s.Name,
-                                        DisplayStatus = s.DisplayStatus,
-                                    })
                                     .AsNoTracking()
                                     .ToListAsync();
 
@@ -72,7 +65,6 @@ public class CategoryRepository : ICategoryRepository
     {
         Category? categories = await _context.Categories
                                             .Where(x => x.DeleteFlag == false && x.CategoryId == categoryId)
-                                            .Select(s => new Category { CategoryId = s.CategoryId, Name = s.Name, DisplayStatus = s.DisplayStatus })
                                             .AsNoTracking()
                                             .FirstOrDefaultAsync();
 
