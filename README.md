@@ -82,6 +82,18 @@ https://github.com/RoyMorillo/BB20_Backend/tree/Development
     - /ContentVideo/Create [POST]
     - /ContentVideo/Update [PUT]
     - /ContentVideo/Delete/{contentVideoId} [DELETE]
+    - /ContentDisplayOption/GetAll [GET]
+    - /ContentDisplayOption/GetDataById/{contentDisplayOptionId} [GET]
+    - /ContentDisplayOption/GetDataByContentId/{contentId} [GET]
+    - /ContentDisplayOption/Create [POST]
+    - /ContentDisplayOption/Update [PUT]
+    - /ContentDisplayOption/Delete [DELETE]
+    - /DisplayOptionCategory/GetAll [GET]
+    - /DisplayOptionCategory/GetDataById/{displayOptionCategoryId} [GET]
+    - /DisplayOptionCategory/GetDataByContentDisplayOptionId/{contentDisplayOptionId} [GET]
+    - /DisplayOptionCategory/Create [POST]
+    - /DisplayOptionCategory/Update [PUT]
+    - /DisplayOptionCategory/Delete [DELETE]
 
 ## 👓 Authors
 
