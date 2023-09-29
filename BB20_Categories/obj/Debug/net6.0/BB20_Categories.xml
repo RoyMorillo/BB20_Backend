@@ -15,6 +15,12 @@
             </summary>
             <returns>List of categories only</returns>
         </member>
+        <member name="M:BB20_Categories.Controllers.v1.CategoryController.GetAllTree">
+            <summary>
+            Get all categories and subcategories and interior categories in tree structure
+            </summary>
+            <returns>List of categories and subcategories and interior categories in tree structure</returns>
+        </member>
         <member name="M:BB20_Categories.Controllers.v1.CategoryController.GetDataById(System.Int32)">
             <summary>
             Get a category by its ID
@@ -75,6 +81,206 @@
         <member name="P:BB20_Categories.Models.DTOs.CategoryDTO.DisplayStatus">
             <summary>
             Status of the category (display = 0 or hidden = 1)
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryDTO.CreatedDate">
+            <summary>
+            DateTime of the creation of the row
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryDTO.UpdatedDate">
+            <summary>
+            DateTime of the update of the row
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryDTO.DeleteFlag">
+            <summary>
+            If the row is logicaly deleted (0 = false and 1 = true)
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryDTO.RowVersion">
+            <summary>
+            This field is for the management of the concurrency
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryTreeDTO.CategoryId">
+            <summary>
+            ID of the category
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryTreeDTO.Name">
+            <summary>
+            Name of the category
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryTreeDTO.DisplayStatus">
+            <summary>
+            Status of the category (display = 0 or hidden = 1)
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryTreeDTO.CreatedDate">
+            <summary>
+            DateTime of the creation of the row
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryTreeDTO.UpdatedDate">
+            <summary>
+            DateTime of the update of the row
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryTreeDTO.DeleteFlag">
+            <summary>
+            If the row is logicaly deleted (0 = false and 1 = true)
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.CategoryTreeDTO.RowVersion">
+            <summary>
+            This field is for the management of the concurrency
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.CategoryId">
+            <summary>
+            ID of the category it belongs
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.SubCategoryId">
+            <summary>
+            ID of the sub category this interior category belongs to
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.Name">
+            <summary>
+            Name of the interior category
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.DisplayStatus">
+            <summary>
+            Status of the interior category (display = 0 or hidden = 1)
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.Icon">
+            <summary>
+            Interior Category Icon
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.CategoryLandPageDesc">
+            <summary>
+            Main Category landing page description
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.CategoryLandPageHead">
+            <summary>
+            Main Category landing page Headline
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.SubCategoryLandPageDesc">
+            <summary>
+            Sub category landing page description
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.IsActive">
+            <summary>
+            If the category is in active status (0 = active and 1 = Inactive)
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.Seotitle">
+            <summary>
+            Landing page SEO Title
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.SeoprettyUrl">
+            <summary>
+            Landing page SEO Pretty URL
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.InteriorCategoryDTO.SeodescMetadata">
+            <summary>
+            Landing page SEO Description Metadata
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.SubCategoryId">
+            <summary>
+            ID of the sub category
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.CategoryId">
+            <summary>
+            ID of the category this sub category belongs to
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.Name">
+            <summary>
+            Name of the sub category
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.DisplayStatus">
+            <summary>
+            Status of the sub category (display = 0 or hidden = 1)
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.FtinHeaderAndFooter">
+            <summary>
+            Feature In header and footer
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.FtinBannerIcon">
+            <summary>
+            Feature in the banner icons section
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.FtinTitle">
+            <summary>
+            Feature in the titles section
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.Icon">
+            <summary>
+            Sub Category Icon
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.UseExternalUrl">
+            <summary>
+            Use external url
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.CategoryLandPageDesc">
+            <summary>
+            Main Category landing page description
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.CategoryLandPageHead">
+            <summary>
+            Main Category landing page Headline
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.SubCategoryLandPageDesc">
+            <summary>
+            Sub category landing page description
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.IsActive">
+            <summary>
+            If the category is in active status (0 = active and 1 = Inactive)
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.Static">
+            <summary>
+            If the sub category is static
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.Seotitle">
+            <summary>
+            Landing page SEO Title
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.SeoprettyUrl">
+            <summary>
+            Landing page SEO Pretty URL
+            </summary>
+        </member>
+        <member name="P:BB20_Categories.Models.DTOs.SubCategoryTreeDTO.SeodescMetadata">
+            <summary>
+            Landing page SEO Description Metadata
             </summary>
         </member>
     </members>
