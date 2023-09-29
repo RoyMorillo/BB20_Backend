@@ -70,7 +70,7 @@ public class ContentRepository : IContentRepository
         return _mapper.Map<List<DropDownDTO>>(contents);
     }
 
-    public Task<int> AddAsync(ContentDTO entity)
+    public async Task<int> AddAsync(ContentDTO entity)
     {
         try
         {
@@ -81,9 +81,9 @@ public class ContentRepository : IContentRepository
             content.UpdatedDate = DateTime.Now;
 
             _context.Contents.Add(content);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
-            return Task.FromResult(content.ContentId);
+            return content.ContentId;
         }
         catch (Exception)
         {

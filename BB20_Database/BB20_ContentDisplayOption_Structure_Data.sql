@@ -1,6 +1,6 @@
 ﻿USE [BB20_ContentDisplayOption]
 GO
-/****** Object:  Table [dbo].[ContentDisplayOption]    Script Date: 27/9/2023 2:16:58 p. m. ******/
+/****** Object:  Table [dbo].[ContentDisplayOption]    Script Date: 28/9/2023 2:03:36 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[ContentDisplayOption](
 	[UnlockedPost] [bit] NOT NULL,
 	[EnableML5Search] [bit] NOT NULL,
 	[PackageTemplate] [bit] NOT NULL,
-	[PostType] [int] NOT NULL,
+	[PostType] [int] NULL,
 	[CreatedDate] [datetime2](7) NOT NULL,
 	[UpdatedDate] [datetime2](7) NOT NULL,
 	[DeleteFlag] [bit] NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE [dbo].[ContentDisplayOption](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DisplayOptionCategory]    Script Date: 27/9/2023 2:16:58 p. m. ******/
+/****** Object:  Table [dbo].[DisplayOptionCategory]    Script Date: 28/9/2023 2:03:36 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -41,9 +41,9 @@ GO
 CREATE TABLE [dbo].[DisplayOptionCategory](
 	[ContentDisplayOptionCategoryID] [int] IDENTITY(1,1) NOT NULL,
 	[ContentDisplayOptionID] [int] NOT NULL,
-	[CategoryID] [int] NOT NULL,
-	[SubCategoryID] [int] NOT NULL,
-	[InteriorCategoryID] [int] NOT NULL,
+	[CategoryID] [int] NULL,
+	[SubCategoryID] [int] NULL,
+	[InteriorCategoryID] [int] NULL,
 	[DisplayStatus] [int] NOT NULL,
 	[CreatedDate] [datetime2](7) NOT NULL,
 	[UpdatedDate] [datetime2](7) NOT NULL,
@@ -55,19 +55,19 @@ CREATE TABLE [dbo].[DisplayOptionCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ContentDisplayOption]    Script Date: 27/9/2023 2:16:58 p. m. ******/
+/****** Object:  Index [IX_ContentDisplayOption]    Script Date: 28/9/2023 2:03:36 p. m. ******/
 CREATE NONCLUSTERED INDEX [IX_ContentDisplayOption] ON [dbo].[ContentDisplayOption]
 (
 	[ContentDisplayOptionID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_ContentID]    Script Date: 27/9/2023 2:16:58 p. m. ******/
+/****** Object:  Index [IX_ContentID]    Script Date: 28/9/2023 2:03:36 p. m. ******/
 CREATE NONCLUSTERED INDEX [IX_ContentID] ON [dbo].[ContentDisplayOption]
 (
 	[ContentID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Categories]    Script Date: 27/9/2023 2:16:58 p. m. ******/
+/****** Object:  Index [IX_Categories]    Script Date: 28/9/2023 2:03:36 p. m. ******/
 CREATE NONCLUSTERED INDEX [IX_Categories] ON [dbo].[DisplayOptionCategory]
 (
 	[CategoryID] ASC,
@@ -75,7 +75,7 @@ CREATE NONCLUSTERED INDEX [IX_Categories] ON [dbo].[DisplayOptionCategory]
 	[InteriorCategoryID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_DisplayOptionCategory]    Script Date: 27/9/2023 2:16:58 p. m. ******/
+/****** Object:  Index [IX_DisplayOptionCategory]    Script Date: 28/9/2023 2:03:36 p. m. ******/
 CREATE NONCLUSTERED INDEX [IX_DisplayOptionCategory] ON [dbo].[DisplayOptionCategory]
 (
 	[ContentDisplayOptionCategoryID] ASC
