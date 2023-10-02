@@ -71,6 +71,74 @@ public class CategoryRepository : ICategoryRepository
         return _mapper.Map<CategoryDTO>(categories);
     }
 
+    public async Task<int> AddAsync(CategoryDTO entity)
+    {
+        try
+        {
+            Category category = _mapper.Map<CategoryDTO, Category>(entity);
+
+            category.DeleteFlag = false;
+            category.CreatedDate = DateTime.Now;
+            category.UpdatedDate = DateTime.Now;
+
+            _context.Categories.Add(category);
+            await _context.SaveChangesAsync();
+
+            return category.CategoryId;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    public async Task<bool> UpdateAsync(CategoryDTO entity)
+    {
+        try
+        {
+            Category category = _mapper.Map<CategoryDTO, Category>(entity);
+
+            category.UpdatedDate = DateTime.Now;
+            category.DeleteFlag = false;
+
+            _context.Categories.Update(category);
+            await _context.SaveChangesAsync();
+            return true;
+
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    public async Task<bool> RemoveAsync(int categoryId)
+    {
+        try
+        {
+            Category category = _context.Categories
+                                .Where(x => x.CategoryId == categoryId)
+                                .FirstOrDefault();
+
+            if (category == null)
+            {
+                return false;
+            }
+
+            category.UpdatedDate = DateTime.Now;
+            category.DeleteFlag = true;
+
+            _context.Categories.Update(category);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
     private List<SubCategoryTreeDTO> GetSubCategories()
     {
         var builder = new ConfigurationBuilder()

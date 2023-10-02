@@ -91,6 +91,74 @@ public class SubCategoryRepository : ISubCategoryRepository
         return _mapper.Map<SubCategoryDTO>(subCategories);
     }
 
+    public async Task<int> AddAsync(SubCategoryDTO entity)
+    {
+        try
+        {
+            SubCategory subCategory = _mapper.Map<SubCategoryDTO, SubCategory>(entity);
+
+            subCategory.DeleteFlag = false;
+            subCategory.CreatedDate = DateTime.Now;
+            subCategory.UpdatedDate = DateTime.Now;
+
+            _context.SubCategories.Add(subCategory);
+            await _context.SaveChangesAsync();
+
+            return subCategory.SubCategoryId;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    public async Task<bool> UpdateAsync(SubCategoryDTO entity)
+    {
+        try
+        {
+            SubCategory subCategory = _mapper.Map<SubCategoryDTO, SubCategory>(entity);
+
+            subCategory.UpdatedDate = DateTime.Now;
+            subCategory.DeleteFlag = false;
+
+            _context.SubCategories.Update(subCategory);
+            await _context.SaveChangesAsync();
+            return true;
+
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    public async Task<bool> RemoveAsync(int subCategoryId)
+    {
+        try
+        {
+            SubCategory? subCategory = _context.SubCategories
+                                .Where(x => x.SubCategoryId == subCategoryId)
+                                .FirstOrDefault();
+
+            if (subCategory == null)
+            {
+                return false;
+            }
+
+            subCategory.UpdatedDate = DateTime.Now;
+            subCategory.DeleteFlag = true;
+
+            _context.SubCategories.Update(subCategory);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
     private List<InteriorCategoryDTO> GetInteriorCategories()
     {
         var builder = new ConfigurationBuilder()
