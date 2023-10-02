@@ -61,4 +61,72 @@ public class InteriorCategoryRepository : IinteriorCategoryRepository
 
         return _mapper.Map<List<InteriorCategoryDTO>>(interiorCategories);
     }
+
+    public async Task<int> AddAsync(InteriorCategoryDTO entity)
+    {
+        try
+        {
+            InteriorCategory interiorCategory = _mapper.Map<InteriorCategoryDTO, InteriorCategory>(entity);
+
+            interiorCategory.DeleteFlag = false;
+            interiorCategory.CreatedDate = DateTime.Now;
+            interiorCategory.UpdatedDate = DateTime.Now;
+
+            _context.InteriorCategories.Add(interiorCategory);
+            await _context.SaveChangesAsync();
+
+            return interiorCategory.InteriorCategoryId;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    public async Task<bool> UpdateAsync(InteriorCategoryDTO entity)
+    {
+        try
+        {
+            InteriorCategory interiorCategory = _mapper.Map<InteriorCategoryDTO, InteriorCategory>(entity);
+
+            interiorCategory.UpdatedDate = DateTime.Now;
+            interiorCategory.DeleteFlag = false;
+
+            _context.InteriorCategories.Update(interiorCategory);
+            await _context.SaveChangesAsync();
+            return true;
+
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    public async Task<bool> RemoveAsync(int interiorCategoryId)
+    {
+        try
+        {
+            InteriorCategory? interiorCategory = _context.InteriorCategories
+                                .Where(x => x.InteriorCategoryId == interiorCategoryId)
+                                .FirstOrDefault();
+
+            if (interiorCategory == null)
+            {
+                return false;
+            }
+
+            interiorCategory.UpdatedDate = DateTime.Now;
+            interiorCategory.DeleteFlag = true;
+
+            _context.InteriorCategories.Update(interiorCategory);
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
 }

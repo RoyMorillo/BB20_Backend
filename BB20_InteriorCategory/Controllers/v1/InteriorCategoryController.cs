@@ -220,4 +220,212 @@ public class InteriorCategoryController : ControllerBase
             return BadRequest(response);
         }
     }
+
+    /// <summary>
+    /// This endpoint is for the creation of a interior category, you can create one category at a time.
+    /// </summary>
+    /// <param name="interiorCategoryDTO">interior category you want to create</param>
+    /// <returns>One recored with the interior category created and its Id.</returns>
+    [HttpPost("Create", Name = nameof(Create))]
+    [ProducesResponseType(201, Type = typeof(int))]
+    [ProducesResponseType(400)]
+    public async Task<IActionResult> Create([FromBody] InteriorCategoryDTO interiorCategoryDTO)
+    {
+        ResponseDTO<DataDTO<int>> response = new ResponseDTO<DataDTO<int>>();
+        DataDTO<int> datos = new DataDTO<int>();
+
+        ErrorDTO error = new()
+        {
+            innerException = string.Empty,
+            message = string.Empty
+        };
+
+        if (interiorCategoryDTO == null)
+        {
+            error.message = "Parameter cannot be null";
+            error.innerException = "Parameter cannot be null";
+
+            response.success = false;
+            response.error = error;
+            response.data = datos;
+            return BadRequest(response);
+        }
+
+        if (!ModelState.IsValid)
+        {
+            error.message = "Invalid Data Model";
+            error.innerException = "Invalid Data Model";
+
+            response.success = false;
+            response.error = error;
+            response.data = datos;
+            return BadRequest(response);
+        }
+
+        try
+        {
+            datos.InteriorCategories = await _interiorCategoryRepository.AddAsync(interiorCategoryDTO);
+
+            if (datos.InteriorCategories > 0)
+            {
+                response.success = true;
+                response.error = error;
+                response.data = datos;
+
+                return CreatedAtRoute(
+                        routeName: nameof(Create),
+                        routeValues: new { id = datos.InteriorCategories.ToString() },
+                        value: response);
+            }
+
+            error.message = "Could not Save Data";
+            error.innerException = "Could not Save Data";
+
+            response.success = false;
+            response.error = error;
+            response.data = datos;
+            return BadRequest(response);
+
+        }
+        catch (Exception ex)
+        {
+            error.message = ex.Message;
+            error.innerException = ex.InnerException?.Message;
+
+            response.success = false;
+            response.error = error;
+            response.data = datos;
+            return BadRequest(response);
+        }
+    }
+
+    /// <summary>
+    /// This endpoint is for the update of a interior category, you can update one category at a time.
+    /// </summary>
+    /// <param name="interiorCategoryDTO">interior category to update</param>
+    /// <returns>Do not return interior category only http code 204</returns>
+    [HttpPut("Update", Name = nameof(Update))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> Update([FromBody] InteriorCategoryDTO interiorCategoryDTO)
+    {
+        ResponseDTO<bool> response = new ResponseDTO<bool>();
+
+        ErrorDTO error = new()
+        {
+            innerException = string.Empty,
+            message = string.Empty
+        };
+
+        if (interiorCategoryDTO == null)
+        {
+            error.message = "Parameter cannot be null";
+            error.innerException = "Parameter cannot be null";
+
+            response.success = false;
+            response.error = error;
+            response.data = false;
+
+            return BadRequest(response);
+        }
+
+        if (!ModelState.IsValid)
+        {
+            error.message = "Invalid Data Model";
+            error.innerException = "Invalid Data Model";
+
+            response.success = false;
+            response.error = error;
+            response.data = false;
+
+            return BadRequest(response);
+        }
+
+        try
+        {
+            bool result = await _interiorCategoryRepository.UpdateAsync(interiorCategoryDTO);
+
+            if (result)
+            {
+                return NoContent();
+            }
+
+            response.success = false;
+            response.error = error;
+            response.data = false;
+
+            return NotFound(response);
+        }
+        catch (Exception ex)
+        {
+            error.message = ex.Message;
+            error.innerException = ex.InnerException?.Message;
+
+            response.success = false;
+            response.error = error;
+            response.data = false;
+
+            return BadRequest(response);
+        }
+    }
+
+    /// <summary>
+    /// This endpoint is for the logically delete a interior category, you can delete one interior category at a time.
+    /// </summary>
+    /// <param name="interiorCategoryID"> Id of the interior category to delete, this value is int</param>
+    /// <returns>No interior category only http code 204</returns>
+    [HttpDelete("Delete/{categoryID}", Name = nameof(Delete))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> Delete(int interiorCategoryID)
+    {
+        ResponseDTO<bool> response = new ResponseDTO<bool>();
+
+        ErrorDTO error = new()
+        {
+            innerException = string.Empty,
+            message = string.Empty
+        };
+
+        if (interiorCategoryID <= 0)
+        {
+            error.message = "Parameter cannot be less than zero";
+            error.innerException = "Parameter cannot be less than zero";
+
+            response.success = false;
+            response.error = error;
+            response.data = false;
+
+            return BadRequest(response);
+        }
+
+        try
+        {
+            bool result = await _interiorCategoryRepository.RemoveAsync(interiorCategoryID);
+
+            if (result)
+            {
+                return NoContent();
+            }
+
+            response.success = false;
+            response.error = null;
+            response.data = false;
+
+            return NotFound(response);
+        }
+        catch (Exception ex)
+        {
+            error.message = ex.Message;
+            error.innerException = ex.InnerException?.Message;
+
+            response.success = false;
+            response.error = error;
+            response.data = false;
+
+            return BadRequest(response);
+        }
+    }
 }

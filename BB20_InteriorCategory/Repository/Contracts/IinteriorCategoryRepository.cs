@@ -8,4 +8,7 @@ public interface IinteriorCategoryRepository
     public Task<InteriorCategoryDTO> GetDataById(int interiorCategoryId);
     public Task<List<InteriorCategoryDTO>> GetDataBySubCategoryId(int subCategoryId);
     public Task<List<DropDownDTO>> GetAllForDropDown();
+    public Task<int> AddAsync(InteriorCategoryDTO entity);
+    public Task<bool> UpdateAsync(InteriorCategoryDTO entity);
+    public Task<bool> RemoveAsync(int interiorCategoryId);
 }
