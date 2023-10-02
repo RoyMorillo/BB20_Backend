@@ -76,11 +76,11 @@ public class DisplayOptionCategoryController : ControllerBase
     /// Get a display option category by its ID
     /// </summary>
     /// <returns>display option category info</returns>
-    [HttpGet("GetDataById/{displayOptionCategoryId}", Name = nameof(GetDataById))]
+    [HttpGet("GetDataCategoryById/{displayOptionCategoryId}", Name = nameof(GetDataCategoryById))]
     [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDispOptCatDTO<DisplayOptionCategoryDTO>>))]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async Task<IActionResult> GetDataById(int displayOptionCategoryId)
+    public async Task<IActionResult> GetDataCategoryById(int displayOptionCategoryId)
     {
         ResponseDTO<DataDispOptCatDTO<DisplayOptionCategoryDTO>> response = new ResponseDTO<DataDispOptCatDTO<DisplayOptionCategoryDTO>>();
         DataDispOptCatDTO<DisplayOptionCategoryDTO> data = new DataDispOptCatDTO<DisplayOptionCategoryDTO>();
@@ -177,10 +177,10 @@ public class DisplayOptionCategoryController : ControllerBase
     /// </summary>
     /// <param name="displayOptionCategoryDTO">display option category you want to create</param>
     /// <returns>One recored with the display option category created and its Id.</returns>
-    [HttpPost("Create", Name = nameof(Create))]
+    [HttpPost("CreateCategory", Name = nameof(CreateCategory))]
     [ProducesResponseType(201, Type = typeof(int))]
     [ProducesResponseType(400)]
-    public async Task<IActionResult> Create([FromBody] DisplayOptionCategoryDTO displayOptionCategoryDTO)
+    public async Task<IActionResult> CreateCategory([FromBody] DisplayOptionCategoryDTO displayOptionCategoryDTO)
     {
         ResponseDTO<DataDispOptCatDTO<int>> response = new ResponseDTO<DataDispOptCatDTO<int>>();
         DataDispOptCatDTO<int> datos = new DataDispOptCatDTO<int>();
@@ -224,7 +224,7 @@ public class DisplayOptionCategoryController : ControllerBase
                 response.data = datos;
 
                 return CreatedAtRoute(
-                        routeName: nameof(Create),
+                        routeName: nameof(CreateCategory),
                         routeValues: new { id = datos.DisplayOptionCategories.ToString() },
                         value: response);
             }
@@ -255,11 +255,11 @@ public class DisplayOptionCategoryController : ControllerBase
     /// </summary>
     /// <param name="displayOptionCategoryDTO">display option category to update</param>
     /// <returns>Do not return display option category only http code 204</returns>
-    [HttpPut("Update", Name = nameof(Update))]
+    [HttpPut("UpdateCategory", Name = nameof(UpdateCategory))]
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async Task<IActionResult> Update([FromBody] DisplayOptionCategoryDTO displayOptionCategoryDTO)
+    public async Task<IActionResult> UpdateCategory([FromBody] DisplayOptionCategoryDTO displayOptionCategoryDTO)
     {
         ResponseDTO<bool> response = new ResponseDTO<bool>();
 
@@ -326,11 +326,11 @@ public class DisplayOptionCategoryController : ControllerBase
     /// </summary>
     /// <param name="displayOptionCategoryId"> Id of the display option category to delete, this value is int</param>
     /// <returns>No content display option only http code 204</returns>
-    [HttpDelete("Delete/{contentDisplayOptionId}", Name = nameof(Delete))]
+    [HttpDelete("DeleteCategory/{contentDisplayOptionId}", Name = nameof(DeleteCategory))]
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async Task<IActionResult> Delete(int displayOptionCategoryId)
+    public async Task<IActionResult> DeleteCategory(int displayOptionCategoryId)
     {
         ResponseDTO<bool> response = new ResponseDTO<bool>();
 

@@ -152,3 +152,4 @@ E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Categories\obj\Debug\net6.0\BB20_
 E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Categories\obj\Debug\net6.0\ref\BB20_Categories.dll
 E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Categories\bin\Debug\net6.0\Microservices.json
 E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Categories\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Categories\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

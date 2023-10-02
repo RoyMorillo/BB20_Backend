@@ -33,6 +33,27 @@
             </summary>
             <returns>Return Code and Description of the categories</returns>
         </member>
+        <member name="M:BB20_Categories.Controllers.v1.CategoryController.Create(BB20_Categories.Models.DTOs.CategoryDTO)">
+            <summary>
+            This endpoint is for the creation of a category, you can create one category at a time.
+            </summary>
+            <param name="categoryDTO">category you want to create</param>
+            <returns>One recored with the category created and its Id.</returns>
+        </member>
+        <member name="M:BB20_Categories.Controllers.v1.CategoryController.Update(BB20_Categories.Models.DTOs.CategoryDTO)">
+            <summary>
+            This endpoint is for the update of a category, you can update one category at a time.
+            </summary>
+            <param name="categoryDTO">category to update</param>
+            <returns>Do not return category only http code 204</returns>
+        </member>
+        <member name="M:BB20_Categories.Controllers.v1.CategoryController.Delete(System.Int32)">
+            <summary>
+            This endpoint is for the logically delete a category, you can delete one category at a time.
+            </summary>
+            <param name="categoryID"> Id of the category to delete, this value is uuid</param>
+            <returns>No category only http code 204</returns>
+        </member>
         <member name="P:BB20_Categories.Models.Category.CategoryId">
             <summary>
             ID of the category

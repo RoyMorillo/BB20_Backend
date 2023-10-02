@@ -82,3 +82,10 @@ E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Gateway\bin\Debug\net6.0\runtimes
 E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Gateway\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
 E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Gateway\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Gateway\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Gateway\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Gateway\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Gateway\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Gateway\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Gateway\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Gateway\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+E:\Grupo Mind\Proyectos\BB20\BB20\BackEnd\BB20_Gateway\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
