@@ -75,10 +75,10 @@ public class SubCategoryThumbNailController : ControllerBase
     /// </summary>
     /// <param name="subCategoryThumbNailDTO">subcategory thumb nail you want to create</param>
     /// <returns>One recored with the subcategory thumb nail created and its Id.</returns>
-    [HttpPost("Create", Name = nameof(Create))]
+    [HttpPost("CreateTN", Name = nameof(CreateTN))]
     [ProducesResponseType(201, Type = typeof(int))]
     [ProducesResponseType(400)]
-    public async Task<IActionResult> Create([FromBody] SubCategoryThumbNailDTO subCategoryThumbNailDTO)
+    public async Task<IActionResult> CreateTN([FromBody] SubCategoryThumbNailDTO subCategoryThumbNailDTO)
     {
         ResponseDTO<DataThumbDTO<int>> response = new ResponseDTO<DataThumbDTO<int>>();
         DataThumbDTO<int> datos = new DataThumbDTO<int>();
@@ -122,7 +122,7 @@ public class SubCategoryThumbNailController : ControllerBase
                 response.data = datos;
 
                 return CreatedAtRoute(
-                        routeName: nameof(Create),
+                        routeName: nameof(CreateTN),
                         routeValues: new { id = datos.SubCategoryThumbNails.ToString() },
                         value: response);
             }
@@ -153,11 +153,11 @@ public class SubCategoryThumbNailController : ControllerBase
     /// </summary>
     /// <param name="subCategoryThumbNailDTO">subcategory thumb nail to update</param>
     /// <returns>Do not return subcategory thumb nail only http code 204</returns>
-    [HttpPut("Update", Name = nameof(Update))]
+    [HttpPut("UpdateTN", Name = nameof(UpdateTN))]
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async Task<IActionResult> Update([FromBody] SubCategoryThumbNailDTO subCategoryThumbNailDTO)
+    public async Task<IActionResult> UpdateTN([FromBody] SubCategoryThumbNailDTO subCategoryThumbNailDTO)
     {
         ResponseDTO<bool> response = new ResponseDTO<bool>();
 
@@ -224,11 +224,11 @@ public class SubCategoryThumbNailController : ControllerBase
     /// </summary>
     /// <param name="SubcategoryTNID"> Id of the subcategory thumb nail to delete, this value is int</param>
     /// <returns>No subcategory only http code 204</returns>
-    [HttpDelete("Delete/{subCategoryId}", Name = nameof(Delete))]
+    [HttpDelete("DeleteTN/{subCategoryId}", Name = nameof(DeleteTN))]
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async Task<IActionResult> Delete(int SubcategoryTNID)
+    public async Task<IActionResult> DeleteTN(int SubcategoryTNID)
     {
         ResponseDTO<bool> response = new ResponseDTO<bool>();
 
