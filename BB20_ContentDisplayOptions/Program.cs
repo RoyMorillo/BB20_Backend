@@ -34,7 +34,7 @@ builder.Services.AddEndpointsApiExplorer();
 // Register the Swagger generator, defining 1 or more Swagger documents
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new() { Title = "BB20_SubCategories", Version = "v1" });
+    c.SwaggerDoc("v1", new() { Title = "BB20_ContentDisplayOption", Version = "v1" });
     c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
     c.EnableAnnotations();
     c.IncludeXmlComments(XmlCommentsFilePath);
