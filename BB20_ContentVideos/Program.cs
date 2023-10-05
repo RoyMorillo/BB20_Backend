@@ -6,12 +6,15 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using BB20_ContentVideos.Repository.Services;
 using BB20_ContentVideos.Repository.Contracts;
+using BB20_ContentVideos.SecurityModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionStringSecurity = builder.Configuration.GetConnectionString("SecurityDatabase");
 builder.Services.AddDbContext<BB20_ContentVideoContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<BB20_SecurityGateWayContext>(options => options.UseSqlServer(connectionStringSecurity));
 
 // CORS
 builder.Services.AddCors(options =>

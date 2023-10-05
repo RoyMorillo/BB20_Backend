@@ -1,5 +1,7 @@
-﻿using BB20_Content.Models.DTOs;
+﻿using BB20_Content.Authorization;
+using BB20_Content.Models.DTOs;
 using BB20_Content.Repository.Contracts;
+using BB20_Content.SecurityModels.Enum;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BB20_Content.Controllers.v1;
@@ -28,6 +30,7 @@ public class ContentController : ControllerBase
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
     [Route("GetAll")]
+    [Authorize(Role.Admin, Role.User)]
     public async Task<IActionResult> GetAll()
     {
         ResponseDTO<DataDTO<List<ContentDTO>>> response = new ResponseDTO<DataDTO<List<ContentDTO>>>();
@@ -78,6 +81,7 @@ public class ContentController : ControllerBase
     [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<ContentDTO>>))]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin, Role.User)]
     public async Task<IActionResult> GetDataById(int contentId)
     {
         ResponseDTO<DataDTO<ContentDTO>> response = new ResponseDTO<DataDTO<ContentDTO>>();
@@ -128,6 +132,7 @@ public class ContentController : ControllerBase
     [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<List<ContentDTO>>>))]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin, Role.User)]
     public async Task<IActionResult> GetAllByTitle(string title)
     {
         ResponseDTO<DataDTO<List<ContentDTO>>> response = new ResponseDTO<DataDTO<List<ContentDTO>>>();
@@ -178,6 +183,7 @@ public class ContentController : ControllerBase
     [ProducesResponseType(200, Type = typeof(ResponseDTO<List<DropDownDTO>>))]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin, Role.User)]
     public async Task<IActionResult> GetForDropDown()
     {
         ResponseDTO<List<DropDownDTO>> response = new ResponseDTO<List<DropDownDTO>>();
@@ -229,6 +235,7 @@ public class ContentController : ControllerBase
     [HttpPost("Create", Name = nameof(Create))]
     [ProducesResponseType(201, Type = typeof(int))]
     [ProducesResponseType(400)]
+    [Authorize(Role.Admin)]
     public async Task<IActionResult> Create([FromBody] ContentDTO contentDTO)
     {
         ResponseDTO<DataDTO<int>> response = new ResponseDTO<DataDTO<int>>();
@@ -308,6 +315,7 @@ public class ContentController : ControllerBase
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin)]
     public async Task<IActionResult> Update([FromBody] ContentDTO contentDTO)
     {
         ResponseDTO<bool> response = new ResponseDTO<bool>();
@@ -379,6 +387,7 @@ public class ContentController : ControllerBase
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin)]
     public async Task<IActionResult> Delete(int contentId)
     {
         ResponseDTO<bool> response = new ResponseDTO<bool>();

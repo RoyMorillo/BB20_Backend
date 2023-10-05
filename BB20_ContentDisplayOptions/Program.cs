@@ -6,12 +6,15 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using BB20_ContentDisplayOptions.Repository.Contracts;
 using BB20_ContentDisplayOptions.Repository.Services;
+using BB20_ContentDisplayOptions.SecurityModels;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionStringSecurity = builder.Configuration.GetConnectionString("SecurityDatabase");
 builder.Services.AddDbContext<BB20_ContentDisplayOptionContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<BB20_SecurityGateWayContext>(options => options.UseSqlServer(connectionStringSecurity));
 
 // CORS
 builder.Services.AddCors(options =>
