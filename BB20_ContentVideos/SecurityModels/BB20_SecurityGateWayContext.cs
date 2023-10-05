@@ -23,7 +23,16 @@ namespace BB20_ContentVideos.SecurityModels
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Name=ConnectionStrings:SecurityDatabase");
+                var dir = Directory.GetCurrentDirectory();
+
+                var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json");
+
+                IConfiguration _configuration = builder.Build();
+
+                string cnn = _configuration.GetConnectionString("SecurityDatabase");
+                optionsBuilder.UseSqlServer(cnn);
             }
         }
 

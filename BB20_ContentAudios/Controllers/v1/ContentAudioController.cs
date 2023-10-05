@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BB20_ContentAudios.Repository.Contracts;
 using BB20_ContentAudios.Models.DTOs;
+using BB20_ContentAudios.SecurityModels.Enum;
+using BB20_ContentAudios.Authorization;
 
 namespace BB20_ContentAudios.Controllers.v1;
 
@@ -28,6 +30,7 @@ public class ContentAudioController : ControllerBase
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
     [Route("GetAll")]
+    [Authorize(Role.Admin, Role.User)]
     public async Task<IActionResult> GetAll()
     {
         ResponseDTO<DataDTO<List<ContentAudioDTO>>> response = new ResponseDTO<DataDTO<List<ContentAudioDTO>>>();
@@ -78,6 +81,7 @@ public class ContentAudioController : ControllerBase
     [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<ContentAudioDTO>>))]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin, Role.User)]
     public async Task<IActionResult> GetDataById(int contentAudioId)
     {
         ResponseDTO<DataDTO<ContentAudioDTO>> response = new ResponseDTO<DataDTO<ContentAudioDTO>>();
@@ -128,6 +132,7 @@ public class ContentAudioController : ControllerBase
     [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<List<ContentAudioDTO>>>))]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin, Role.User)]
     public async Task<IActionResult> GetAllByContentId(int contentId)
     {
         ResponseDTO<DataDTO<List<ContentAudioDTO>>> response = new ResponseDTO<DataDTO<List<ContentAudioDTO>>>();
@@ -178,6 +183,7 @@ public class ContentAudioController : ControllerBase
     [HttpPost("Create", Name = nameof(Create))]
     [ProducesResponseType(201, Type = typeof(int))]
     [ProducesResponseType(400)]
+    [Authorize(Role.Admin)]
     public async Task<IActionResult> Create([FromBody] ContentAudioDTO contentAudioDTO)
     {
         ResponseDTO<DataDTO<int>> response = new ResponseDTO<DataDTO<int>>();
@@ -257,6 +263,7 @@ public class ContentAudioController : ControllerBase
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin)]
     public async Task<IActionResult> Update([FromBody] ContentAudioDTO contentAudioDTO)
     {
         ResponseDTO<bool> response = new ResponseDTO<bool>();
@@ -328,6 +335,7 @@ public class ContentAudioController : ControllerBase
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin)]
     public async Task<IActionResult> Delete(int contentAudioId)
     {
         ResponseDTO<bool> response = new ResponseDTO<bool>();
