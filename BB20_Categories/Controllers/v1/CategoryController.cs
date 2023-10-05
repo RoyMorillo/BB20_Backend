@@ -1,5 +1,7 @@
-﻿using BB20_Categories.Models.DTOs;
+﻿using BB20_Categories.Authorization;
+using BB20_Categories.Models.DTOs;
 using BB20_Categories.Repository.Contracts;
+using BB20_Categories.SecurityModels.Enum;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BB20_Categories.Controllers.v1;
@@ -28,6 +30,7 @@ public class CategoryController : ControllerBase
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
     [Route("GetAll")]
+    [Authorize(Role.Admin, Role.User)]
     public async Task<IActionResult> GetAll()
     {
         ResponseDTO<DataDTO<List<CategoryDTO>>> response = new ResponseDTO<DataDTO<List<CategoryDTO>>>();
@@ -79,6 +82,7 @@ public class CategoryController : ControllerBase
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
     [Route("GetAllTree")]
+    [Authorize(Role.Admin, Role.User)]
     public async Task<IActionResult> GetAllTree()
     {
         ResponseDTO<DataDTO<List<CategoryTreeDTO>>> response = new ResponseDTO<DataDTO<List<CategoryTreeDTO>>>();
@@ -129,6 +133,7 @@ public class CategoryController : ControllerBase
     [ProducesResponseType(200, Type = typeof(ResponseDTO<DataDTO<CategoryDTO>>))]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin, Role.User)]
     public async Task<IActionResult> GetDataById(int categoryId)
     {
         ResponseDTO<DataDTO<CategoryDTO>> response = new ResponseDTO<DataDTO<CategoryDTO>>();
@@ -179,6 +184,7 @@ public class CategoryController : ControllerBase
     [ProducesResponseType(200, Type = typeof(ResponseDTO<List<DropDownDTO>>))]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin, Role.User)]
     public async Task<IActionResult> GetForDropDown()
     {
         ResponseDTO<List<DropDownDTO>> response = new ResponseDTO<List<DropDownDTO>>();
@@ -230,10 +236,18 @@ public class CategoryController : ControllerBase
     [HttpPost("Create", Name = nameof(Create))]
     [ProducesResponseType(201, Type = typeof(int))]
     [ProducesResponseType(400)]
+    [Authorize(Role.Admin)]
     public async Task<IActionResult> Create([FromBody] CategoryDTO categoryDTO)
     {
         ResponseDTO<DataDTO<int>> response = new ResponseDTO<DataDTO<int>>();
         DataDTO<int> datos = new DataDTO<int>();
+
+        //Get the user based on the token
+        //string accessToken = HttpContext.Request.Headers["Authorization"];
+        //var infoTokenReturned = accessToken.Split(" ");
+        //JwtUtils jwtUtils = new JwtUtils();
+        //int accountId = jwtUtils.ValidateJwtToken(infoTokenReturned[1].Trim());
+        //End of get the user based on the token
 
         ErrorDTO error = new()
         {
@@ -309,9 +323,17 @@ public class CategoryController : ControllerBase
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin)]
     public async Task<IActionResult> Update([FromBody] CategoryDTO categoryDTO)
     {
         ResponseDTO<bool> response = new ResponseDTO<bool>();
+
+        //Get the user based on the token
+        //string accessToken = HttpContext.Request.Headers["Authorization"];
+        //var infoTokenReturned = accessToken.Split(" ");
+        //JwtUtils jwtUtils = new JwtUtils();
+        //int accountId = jwtUtils.ValidateJwtToken(infoTokenReturned[1].Trim());
+        //End of get the user based on the token
 
         ErrorDTO error = new()
         {
@@ -380,9 +402,17 @@ public class CategoryController : ControllerBase
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
     [ProducesResponseType(404)]
+    [Authorize(Role.Admin)]
     public async Task<IActionResult> Delete(int categoryID)
     {
         ResponseDTO<bool> response = new ResponseDTO<bool>();
+
+        //Get the user based on the token
+        //string accessToken = HttpContext.Request.Headers["Authorization"];
+        //var infoTokenReturned = accessToken.Split(" ");
+        //JwtUtils jwtUtils = new JwtUtils();
+        //int accountId = jwtUtils.ValidateJwtToken(infoTokenReturned[1].Trim());
+        //End of get the user based on the token
 
         ErrorDTO error = new()
         {

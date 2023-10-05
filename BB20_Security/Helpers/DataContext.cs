@@ -6,7 +6,7 @@ using WebApi.Entities;
 public class DataContext : DbContext
 {
     public DbSet<Account> Accounts { get; set; }
-    
+
     private readonly IConfiguration Configuration;
 
     public DataContext(IConfiguration configuration)
@@ -16,7 +16,7 @@ public class DataContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        // connect to sqlite database
-        options.UseSqlite(Configuration.GetConnectionString("WebApiDatabase"));
+        // connect to sqlserver database
+        options.UseSqlServer(Configuration.GetConnectionString("SecurityDatabase"));
     }
 }

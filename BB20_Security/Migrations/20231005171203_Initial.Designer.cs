@@ -2,70 +2,77 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApi.Helpers;
 
 #nullable disable
 
-namespace WebApi.Migrations
+namespace BB20_Security.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220224040327_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231005171203_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.2");
+            modelBuilder
+                .HasAnnotation("ProductVersion", "6.0.22")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("WebApi.Entities.Account", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<bool>("AcceptTerms")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("PasswordReset")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("ResetToken")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ResetTokenExpires")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Role")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Updated")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("VerificationToken")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("Verified")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -78,34 +85,36 @@ namespace WebApi.Migrations
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
+
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"), 1L, 1);
 
                             b1.Property<int>("AccountId")
-                                .HasColumnType("INTEGER");
+                                .HasColumnType("int");
 
                             b1.Property<DateTime>("Created")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("datetime2");
 
                             b1.Property<string>("CreatedByIp")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<DateTime>("Expires")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("datetime2");
 
                             b1.Property<string>("ReasonRevoked")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("ReplacedByToken")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<DateTime?>("Revoked")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("datetime2");
 
                             b1.Property<string>("RevokedByIp")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("Token")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.HasKey("Id");
 
